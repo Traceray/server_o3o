@@ -1,0 +1,148 @@
+/* 单个产品的包含 */
+.productContainer {
+  //border-top: 1px dashed #C0C0C0;
+  border-bottom: 1px dashed rgba(212, 212, 212, 0.8);
+  margin-bottom: 18px;
+  background-color: #FFFFFF;
+
+  /* 图片样式 */
+  .imgContainer {
+    img {
+      width: 100%;
+    }
+  }
+
+  .contentContainer {
+    padding: 0 3%;
+    height: 68px;
+  }
+
+  /* 名称 介绍 */
+  .productIntroduce {
+
+    .goodsName {
+      margin-top: 8px;
+      span {
+        font-size: 17px;
+        color: #e71e37;
+        font-weight: 600;
+      }
+
+    }
+
+    .price {
+      margin-left: 18px;
+      margin-top: 8px;
+
+      .meoneySign {
+        font-size: 16px;
+        color: #000000;
+        font-weight: 600;
+      }
+
+      .moneyNum {
+        font-size: 15px;
+        color: #000000;
+        font-weight: 600;
+      }
+    }
+
+  }
+
+  /* 包含+ - 数量 */
+  .quantity {
+    padding-top: 13px;
+
+    .sum2 {
+      float: right;
+      margin-top: 10px;
+      line-height: 30px;
+      font-size: 18px;
+      text-align: center;
+      width: 40px;
+      color: #000;
+      height: 30px;
+      border: 0px;
+      background: #FFF;
+      border-radius: 0px;
+
+      .sum {
+        float: right;
+        line-height: 30px;
+        font-size: 18px;
+        text-align: center;
+        width: 40px;
+        color: #000;
+        height: 28px;
+        border: 0px;
+        background: #FFF;
+        border-radius: 0px;
+        border-bottom: 0px solid #e6e6e6;
+        border-top: 0px solid #e6e6e6;
+      }
+
+    }
+
+    .minusButton {
+      width: 30px;
+      height: 30px;
+      background: #e76c75;
+      margin-top: 10px;
+      /*display: block;*/
+      display: inline-block;
+      font-weight: bold;
+      font-size: 24px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      color: #fff;
+      text-align: center;
+      float: right;
+      line-height: 30px;
+
+      &:active {
+        background: #e74849;
+      }
+    }
+
+    .plusButton {
+      width: 40px;
+      height: 40px;
+      background: #e76c75;
+      /*background-color: #44c767;*/
+      display: inline-block;
+      /*display: block;*/
+      font-weight: bold;
+      font-size: 24px;
+      color: #FFF;
+      line-height: 40px;
+      text-align: center;
+      float: right;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      /*color: #ffffff;*/
+      /*font-size: 30px;*/
+      /*padding: 16px 22px;*/
+      /*text-decoration: none;*/
+
+      &:active {
+        //background: #ffc223;
+        background: #e74849;
+      }
+
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+  }
+
+}
+

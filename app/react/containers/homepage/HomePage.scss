@@ -1,0 +1,112 @@
+.container {
+  width: 100%;
+  //background-color: #ffffff;
+  background-color: #fff9f6;
+
+  /**
+  * 轮播画廊
+  */
+  .imageGalleryContainer {
+    text-align: center;
+    margin-top: 6px;
+    padding: 12px 13px;
+    width: 95%;
+    height: 120px;
+    min-height: 120px;
+
+    .imageGalleryOriginalClass {
+      height: 120px;
+    }
+
+  }
+
+  .imageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-image: url("http://cdn.o3onet.com/sylj/images/home_banner_bg.png");
+    background-size: cover;
+    text-align: center;
+
+    .seachContainer {
+      position: absolute;
+      width: 95%;
+      top: .75rem;
+      padding: 0 .75rem;
+
+      span {
+        position: absolute;
+        left: 1.5rem;
+        top: .5rem;
+        background-image: url("http://cdn.o3onet.com/sylj/images/spirit.png");
+        background-size: 2.5rem 7.5625rem;
+        width: .8125rem;
+        height: .8125rem;
+        display: inline-block;
+        background-position: 0 -2.3125rem;
+      }
+
+      input {
+        height: 1.875rem;
+        width: 90%;
+        border: 0;
+        background: rgba(255, 255, 255, 0.9);
+        color: #999;
+        font-size: .875rem;
+        padding-left: 2.0625rem;
+        border-radius: .1875rem;
+        display: inline-block;
+        line-height: 1.875rem;
+        vertical-align: middle;
+      }
+    }
+
+    img {
+      margin-top: 70px;
+    }
+
+  }
+
+  /**
+  * 圆形分类导航
+  */
+
+  .roundHomeNavContainer {
+    margin-top: 0px;
+    //background-color: #fff9f6;
+    background-color: #ffffff;
+  }
+
+  /**
+  * 分类导航
+  */
+  .productFloorContainer {
+    margin-top: 0px;
+    //background-color: #fff9f6;
+    background-color: #ffffff;
+  }
+
+  /**
+   * 菜到我家推荐分类
+   */
+  .cdwjContainer {
+    height: 100%;
+    margin-top: 20px;
+    overflow: hidden;
+    //background-color: #fff9f6;
+    background-color: #ffffff;
+
+  }
+
+  /**
+  * 推荐菜品
+  */
+  .tuijianContainer {
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-top: 1px rgba(255, 198, 85, 0.4) solid;
+  }
+
+}
+

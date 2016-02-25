@@ -1,0 +1,46 @@
+.container {
+
+  .mainContainer {
+
+    .titleContainer {
+      height: 18px;
+
+      .title {
+        font-size: 15px;
+        line-height: 18px;
+        font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体";
+        overflow: hidden;
+      }
+
+      .date {
+        line-height: 18px;
+        float: right;
+        color: rgba(134, 134, 134, 0.8);
+        font-size: 12px;
+      }
+    }
+
+    .contentContainer {
+      background-color: rgba(237, 169, 7, 0.1);
+      margin: 8px 3px;
+
+      .content {
+        padding: 5px 5px 6px 10px;
+
+        .message {
+          padding: 6px 0;
+          label {
+            color: rgba(122, 110, 111, 0.8);
+            font-size: 13px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+

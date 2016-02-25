@@ -1,0 +1,89 @@
+{
+  "app": {
+    "baseInfo": {
+      "name": "o3o_sylianjia_wx",
+      "appName": "sylj",
+      "prefixPath": "o3o",
+      "websiteUrl": "wx.sylj.o3onet.com",
+      "protocol": "http://",
+      "cdnDomainUrl": "",
+      "apiBaseUrl": "/sylj"
+    },
+    "multipleShare": {
+      "sysName": "o3oNet"
+    }
+  },
+  "apiStore": {
+    "msg106Apikey": "92d19509c2d0a19a2b8d9df08a7eb31a"
+  },
+  "tuling123": {
+    "APIKey": "88c057b3984131686fcc56f278f43cb8"
+  },
+  "database": {
+    "redisConfig": {
+      "host": "95f5c24e0cd348a9.m.cnbja.kvstore.aliyuncs.com",
+      "password": "95f5c24e0cd348a9:shaoS924744",
+      "port": 6379
+    },
+    "mysqlConfig": {
+      "ztgDataBase": {
+        "host": "rdsjiqfafzrzrz2o.mysql.rds.aliyuncs.com",
+        "user": "o3o_server_ztg",
+        "password": "o3o_server_ztg",
+        "database": "o3o_server_ztg",
+        "port": 3306,
+        "connectionLimit": 3
+      },
+      "infoDataBase": {
+        "host": "rdsjiqfafzrzrz2.mysql.rds.aliyuncs.com",
+        "user": "infomation",
+        "password": "infomationo3oNet",
+        "database": "infomation",
+        "port": 3306,
+        "connectionLimit": 30
+      },
+      "promotDataBase": {
+        "host": "rdsjiqfafzrzrz2.mysql.rds.aliyuncs.com",
+        "user": "promotion",
+        "password": "promotiono3oNet",
+        "database": "promotions",
+        "port": 3306,
+        "connectionLimit": 30
+      },
+      "syljDataBase": {
+        "host": "rdsjiqfafzrzrz2.mysql.rds.aliyuncs.com",
+        "user": "o3o_sylj_wx",
+        "password": "o3o_sylj_wx",
+        "database": "o3o_sylj_wx",
+        "port": 3306,
+        "connectionLimit": 30
+      }
+    },
+    "mongoDB": {
+      "host": "localhost",
+      "port": 32770,
+      "user": "",
+      "password": "",
+      "database": "",
+      "db": "localhost:32770"
+    }
+  },
+  "wechat": {
+    "wxAppConfig": {
+      "appid": "wx62ac15943a6a9990",
+      "secret": "09ff027eb1f6034b66310ef8755bc529",
+      "token": "smksjxo3oNetWX",
+      "encodingAESKey": "VJwT3DI05bHuixzu5BYBd1H9eiTHXZsFUWLJ4OMQrGh"
+    },
+    "wePayConfig": {
+      "appid": "wx62ac15943a6a9990",
+      "mch_id": "1234360602"
+    },
+    "componentConfig": {
+      "component_appid": "wx1b2d7217edd11dad",
+      "component_appsecret": "d8f959c4e757c68fc45538072c3d1e8c",
+      "encodingAESKey": "W8ld9ln3UU48KLMG21bYoLHfFPy2I0i8hSrHNioySA9",
+      "token": "JodnHziTuiGuangZERWXo3oNet"
+    }
+  }
+}

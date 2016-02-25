@@ -1,0 +1,310 @@
+/**
+*   内容标签开始
+*/
+
+/* content-tabs  */
+
+.content-tabs {
+    position: relative;
+    height: 42px;
+    background: #fafafa;
+    line-height: 40px
+}
+
+.content-tabs .roll-nav, .page-tabs-list {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #999;
+    z-index: 2;
+    top: 0
+}
+
+.content-tabs .roll-left {
+    left: 0;
+    border-right: solid 1px #eee
+}
+
+.content-tabs .roll-right {
+    right: 0;
+    border-left: solid 1px #eee
+}
+
+.content-tabs button {
+    background: #fff;
+    border: 0;
+    height: 40px;
+    width: 40px;
+    outline: 0
+}
+
+.content-tabs button:hover {
+    background: #fafafa
+}
+
+nav.page-tabs {
+    margin-left: 40px;
+    width: 100000px;
+    height: 40px;
+    overflow: hidden
+}
+
+nav.page-tabs .page-tabs-content {
+    float: left
+}
+
+.page-tabs a {
+    display: block;
+    float: left;
+    border-right: solid 1px #eee;
+    padding: 0 15px
+}
+
+.page-tabs a i:hover {
+    color: #c00
+}
+
+.content-tabs .roll-nav:hover, .page-tabs a:hover {
+    color: #777;
+    background: #f2f2f2;
+    cursor: pointer
+}
+
+.roll-right.J_tabRight {
+    right: 140px
+}
+
+.roll-right.btn-group {
+    right: 60px;
+    width: 80px;
+    padding: 0
+}
+
+.roll-right.btn-group button {
+    width: 80px
+}
+
+.roll-right.J_tabExit {
+    background: #fff;
+    height: 40px;
+    width: 60px;
+    outline: 0
+}
+
+.dropdown-menu-right {
+    left: auto
+}
+
+.content-tabs {
+    border-bottom: solid 2px #2f4050
+}
+
+.page-tabs a {
+    color: #999
+}
+
+.page-tabs a i {
+    color: #ccc
+}
+
+.page-tabs a.active {
+    background: #2f4050;
+    color: #a7b1c2
+}
+
+.page-tabs a.active i:hover, .page-tabs a.active:hover {
+    background: #293846;
+    color: #fff
+}
+
+/**
+* skin1 add
+*/
+.skin-1 .nav.nav-tabs > li.active > a {
+    color: #555
+}
+
+.skin-1 .content-tabs {
+    border-bottom: solid 2px #39aef5
+}
+
+.skin-1 .nav.nav-tabs > li.active {
+    background: 0 0
+}
+
+.skin-1 .page-tabs a.active {
+    background: #39aef5;
+    color: #fff
+}
+
+.skin-1 .page-tabs a.active i:hover, .skin-1 .page-tabs a.active:hover {
+    background: #0e9aef;
+    color: #fff
+}
+
+/**/
+.skin-3 .content-tabs {
+    border-bottom: solid 2px #3e2c42
+}
+
+.skin-3 .nav.nav-tabs > li.active {
+    background: 0 0
+}
+
+.skin-3 .page-tabs a.active {
+    background: #3e2c42;
+    color: #fff
+}
+
+.skin-3 .page-tabs a.active i:hover, .skin-3 .page-tabs a.active:hover {
+    background: #38283c;
+    color: #fff
+}
+
+@media (min-width: 768px) {
+    .navbar-top-links .dropdown-alerts, .navbar-top-links .dropdown-messages, .navbar-top-links .dropdown-tasks {
+        margin-left: auto
+    }
+}
+
+@media (max-width: 768px) {
+    body.fixed-sidebar .navbar-static-side {
+        display: none
+    }
+
+    body.fixed-sidebar.mini-navbar .navbar-static-side {
+        width: 70px
+    }
+
+    .lock-word, .navbar-form-custom {
+        display: none
+    }
+
+    .navbar-header {
+        display: inline;
+        float: left
+    }
+
+    .sidebard-panel {
+        z-index: 2;
+        position: relative;
+        width: auto;
+        min-height: 100% !important
+    }
+
+    .sidebar-content .wrapper {
+        padding-right: 0;
+        z-index: 1
+    }
+
+    .fixed-sidebar.body-small .navbar-static-side {
+        display: none;
+        z-index: 2001;
+        position: fixed;
+        width: 220px
+    }
+
+    .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+        display: block
+    }
+
+    .ibox-tools {
+        float: none;
+        text-align: right;
+        display: block
+    }
+
+    .content-tabs {
+        display: none
+    }
+
+    #content-main {
+        height: calc(100% - 100px)
+    }
+
+    .fixed-nav #content-main {
+        height: calc(100% - 38px)
+    }
+}
+
+.J_menuTab {
+    -webkit-transition: all .3s ease-out 0s;
+    transition: all .3s ease-out 0s
+}
+
+::-webkit-scrollbar-track {
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #999
+}
+
+.gohome {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100
+}
+
+.gohome a {
+    height: 38px;
+    width: 38px;
+    display: block;
+    background: #2f4050;
+    padding: 9px 8px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    opacity: .5
+}
+
+.gohome a:hover {
+    opacity: 1
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    #content-main {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+#content-main {
+    height: calc(100% - 140px);
+    overflow: hidden
+}
+
+.fixed-nav #content-main {
+    height: calc(100% - 80px);
+    overflow: hidden
+}
+
+#nav-wrapper nav {
+    height: calc(100%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+#nav-wrapper ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+    background-color: inherit;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+#nav-wrapper ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inherit;
+    background-color: inherit;
+}
+
+/*定义滑块 内阴影+圆角*/
+#nav-wrapper ::-webkit-scrollbar-thumb {
+    background-color: inherit;
+}

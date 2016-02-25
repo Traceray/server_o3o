@@ -1,0 +1,129 @@
+.container {
+  height: 180px;
+  overflow: hidden;
+  border: 1px rgba(255, 198, 85, 0.4) solid;
+
+  /**
+  * 左侧宣传栏
+  */
+  .lfetMainContanier {
+    border-right: 1px rgba(255, 198, 85, 0.4) solid;
+    height: 180px;
+    overflow: hidden;
+
+    .title {
+      text-align: left;
+      margin-left: 5px;
+      margin-top: 13px;
+
+      span {
+        color: #ff200f;
+      }
+    }
+
+    .subTitle {
+      margin-top: 5px;
+      font-size: 10px;
+      color: #a9a9a9;
+      overflow: hidden;
+      span {
+        margin-left: 16px;
+      }
+    }
+
+    .imgContainer {
+      margin-top: 25px;
+      overflow: hidden;
+      text-align: center;
+      img {
+
+      }
+    }
+
+  }
+
+  /**
+  * 右侧宣传栏
+  */
+  .rightMainContanier {
+    border-right: 1px solid #e0e0e0;
+    height: 180px;
+    overflow: hidden;
+
+    .topContanier {
+      height: 70px;
+      border-bottom: 1px rgba(255, 198, 85, 0.4) solid;
+
+      .title {
+        text-align: left;
+        margin-top: 15px;
+        margin-left: 13px;
+      }
+
+      .subTitle {
+        margin-top: 8px;
+        font-size: 10px;
+        color: #a9a9a9;
+        overflow: hidden;
+        span {
+          margin-left: 16px;
+        }
+      }
+
+      .imgContainer {
+        margin-top: 10px;
+        text-align: center;
+        img {
+
+        }
+      }
+
+    }
+
+    .bottomContanier {
+      height: 110px;
+
+      .title {
+        text-align: center;
+        margin-top: 6px;
+        margin-left: 3px;
+        span {
+          color: #ff7006;
+          font-size: 18px;
+          letter-spacing: 8px;
+          font-weight: bold;
+        }
+      }
+
+      .subTitle {
+        margin-left: 10px;
+        margin-top: 3px;
+        font-size: 10px;
+        color: #a9a9a9;
+        overflow: hidden;
+        span {
+          margin-left: 16px;
+        }
+      }
+
+      .imgContainer {
+        margin-top: 15px;
+        text-align: center;
+        img {
+
+        }
+      }
+
+      .lfetContanier {
+        border-right: 1px rgba(255, 198, 85, 0.4) solid;
+
+      }
+
+      .rightContanier {
+
+      }
+
+    }
+
+  }
+}

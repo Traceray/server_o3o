@@ -1,0 +1,150 @@
+.container {
+
+  .iconContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .topRow_First {
+      flex: 1;
+    }
+
+    .topRow_Default {
+      flex: 1;
+      background: url('http://cdn.o3onet.com/common/images/line_default.png') repeat-y center center;
+    }
+
+    .topRow_Active {
+      flex: 1;
+      background: url('http://cdn.o3onet.com/common/images/line_active.png') repeat-y center center;
+    }
+
+    .centerRow {
+      color: white;
+
+      .num {
+        margin: 3px auto;
+        height: 25px;
+        width: 25px;
+        border-radius: 100%;
+        display: inline-block;
+        vertical-align: middle;
+
+        span {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        i {
+          height: 100%;
+          width: 0;
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+      }
+
+      .num_Default {
+        background-color: #828282;
+      }
+
+      .num_Active {
+        background-color: #ffbf24;
+      }
+
+    }
+
+    .bottomRow_Default {
+      flex: 1;
+      background: url('http://cdn.o3onet.com/common/images/line_default.png') repeat-y center center;
+    }
+
+    .bottomRow_Active {
+      flex: 1;
+      background: url('http://cdn.o3onet.com/common/images/line_active.png') repeat-y center center;
+    }
+
+    .blankRow {
+      height: 26px;
+    }
+
+  }
+
+  .contentContanier {
+
+    .arrow_box_Default {
+      margin-left: 8px;
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #828282;
+
+      &:after, &:before {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      &:after {
+        border-color: rgba(130, 130, 130, 0);
+        border-right-color: #ffffff;
+        border-width: 6px;
+        margin-top: -6px;
+      }
+      &:before {
+        border-color: rgba(130, 130, 130, 0);
+        border-right-color: #828282;
+        border-width: 7px;
+        margin-top: -7px;
+      }
+
+      .content {
+        padding: 10px 8px;
+        min-height: 38px;
+      }
+
+    }
+
+    .arrow_box_Active {
+      margin-left: 8px;
+      position: relative;
+      background: #ffffff;
+      border: 1px solid #ffb607;
+
+      &:after, &:before {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      &:after {
+        border-color: rgba(130, 130, 130, 0);
+        border-right-color: #FFFFFF;
+        border-width: 6px;
+        margin-top: -6px;
+      }
+      &:before {
+        border-color: rgba(130, 130, 130, 0);
+        border-right-color: #ffb607;
+        border-width: 7px;
+        margin-top: -7px;
+      }
+
+      .content {
+        padding: 10px 8px;
+        min-height: 38px;
+      }
+
+    }
+
+  }
+
+}
+

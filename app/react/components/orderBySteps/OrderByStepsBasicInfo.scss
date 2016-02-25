@@ -1,0 +1,76 @@
+.container {
+  background-color: #EEEEEE;
+
+  .title {
+    background-color: #dddddd;
+    box-shadow: 0 2px 6px 0 rgba(240, 239, 15, 0.3);
+    height: 35px;
+    span {
+      letter-spacing: 3px;
+      margin-left: 20px;
+      line-height: 35px;
+      font-size: 14px;
+      color: #585858;
+    }
+  }
+
+  .mainContent {
+    background-color: #FFFFFF;
+
+    border-top: 1px #c4c4c4 solid;
+    width: 100%;
+    .content {
+      background-color: #FFFFFF;
+      height: 46px;
+      line-height: 46px;
+      border-bottom: 1px #c4c4c4 solid;
+      font-size: 15px;
+
+      .leftTitle {
+        span {
+          margin-left: 10px;
+          font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+          font-weight: 600;
+        }
+      }
+
+      .middleTitle {
+        float: right;
+        margin-right: 6px;
+        span {
+          margin-left: 10px;
+          font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+          font-weight: 500;
+        }
+      }
+
+      i {
+        font-size: 32px;
+        //font-weight: 500;
+      }
+
+    }
+  }
+
+  .noticeInfo {
+    margin-top: 5px;
+    span {
+      color: #585858;
+      padding: 10px 15px;
+      font-size: 10px;
+    }
+  }
+
+  .nextStep {
+    margin-top: 5px;
+    padding-bottom: 8px;
+    .button_sp_area {
+      width: 70%;
+      padding: 10px 0;
+      margin: 0 auto;
+      text-align: justify;
+      font-size: 0;
+    }
+  }
+
+}

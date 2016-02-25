@@ -1,0 +1,93 @@
+/**
+*
+*/
+.am-sticky {
+    position: fixed !important;
+    z-index: 1010;
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+[data-am-sticky][class*="am-animation-"] {
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
+}
+
+/**
+* 滚动侦测导航
+*/
+.scrollspy-nav-contanier {
+    position: relative;
+    z-index: 999;
+    height: 44px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+    background: #eeeeee;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scrollspy-nav-contanier .mui-scroll-spy-btn {
+    width: 40px;
+    height: 44px;
+    line-height: 44px;
+    background: #FFF;
+    border-left: 1px solid #EEE;
+    position: absolute;
+    z-index: 1002;
+    right: 0;
+    top: 0;
+    text-align: center;
+    color: #9E9E9E;
+}
+
+.scrollspy-nav-contanier .mui-scroll-spy-btn:after {
+    content: 'V';
+    width: 16px;
+    height: 16px;
+}
+
+.scrollspy-nav {
+    height: 70px;
+    left: 0;
+    top: 0;
+    right: 0;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+}
+
+.scrollspy-nav ul {
+    text-align: center;
+    font-size: 0;
+    letter-spacing: -4px;
+    padding-right: 40px;
+    margin-right: 40px;
+    width: 100%;
+}
+
+.scrollspy-nav li {
+    display: inline-block;
+    letter-spacing: 0;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 10px;
+    color: #383838;
+    background: transparent;
+
+}
+
+.scrollspy-nav a {
+    color: #383838;
+    padding: 0px 2px;
+    display: inline-block;
+}
+
+.scrollspy-nav a.am-active {
+    color: #fc050f;
+    font-weight: bold;
+}

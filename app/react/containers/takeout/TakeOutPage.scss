@@ -1,0 +1,142 @@
+/* 底层购物结账栏  */
+
+.checkoutBox {
+  position: relative;
+
+  .bottom {
+    position: fixed;
+    bottom: 0px;
+    overflow: hidden;
+    height: 50px;
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .checkoutInfo {
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    .checkoutIcon {
+      height: 50px;
+
+      .iconNum {
+        position: absolute;
+        color: #FFFFFF;
+        height: 22px;
+        width: 22px;
+        top: 3px;
+        left: 10%;
+        opacity: 1;
+        border-radius: 100%;
+        background-color: #f90802;
+        font-size: 12px;
+        z-index: 678;
+        span {
+          font-size: 18px;
+          padding-left: 22%;
+        }
+      }
+
+      .iconfont {
+        position: relative;
+        line-height: 50px;
+        font-size: 33px;
+        color: yellow;
+        margin-left: 25%;
+
+      }
+    }
+
+    .checkoutSumMoney {
+      /*background-color: #ef3d76;*/
+      line-height: 50px;
+
+      .moneySign {
+        font-size: 23px;
+        color: #fbfbfb;
+        padding-left: 1%;
+        font-weight: 400;
+      }
+
+      .sumMoney {
+        font-size: 23px;
+        color: #fbfbfb;
+        padding-left: 3px;
+        font-weight: 400;
+        &::after {
+          content: "";
+          border-right: 1px solid silver;
+          position: relative;
+          margin-left: 15px;
+        }
+      }
+
+    }
+
+    /*  提示消息 */
+    .checkoutNotice {
+      height: 50px;
+
+      span {
+        line-height: 50px;
+        font-size: 10px;
+        color: #eeeeee;
+      }
+
+    }
+
+  }
+
+  /* 下单按钮 */
+  .checkoutBtn {
+    height: 50px;
+    background-color: #FCCA0E;
+    opacity: 0.9;
+
+    span {
+      margin: 0 auto;
+      font-size: 18px;
+      width: 100px;
+      line-height: 50px;
+      text-align: center;
+      font-weight: 700;
+      color: #5c25e7;
+      z-index: 80;
+    }
+
+    label {
+      margin-left: 8px;
+      line-height: 50px;
+      font-size: 15px;
+      width: 100px;
+      font-weight: 700;
+      color: #f90802;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .hide {
+      display: none;
+    }
+
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    /* 占位隐藏 */
+    visibility: hidden;
+  }
+
+}
+
+
+
+
+
+
+

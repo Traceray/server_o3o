@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="o3oThumb">
+    <meta name="keywords" content="o3oThumb">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>o3oThumb</title>
+    <!--<link rel="stylesheet" href="http://cdn.o3oNet.com/ff/css/all.css"/>-->
+    <link rel="stylesheet" href="/ff/css/all.css"/>
+</head>
+<body>
+<div id="app">{{html|safe}}</div>
+<script>
+    window.__INITIAL_STATE__ = {{JSON.stringify(initialState)}} /* */
+</script>
+
+<!--<script src="/ff/socket.io/socket.io.js"></script>-->
+<!--<script src="http://cdn.o3oNet.com/ff/js/vendor.js?v=14"></script>-->
+<!--<script src="http://cdn.o3oNet.com/ff/js/vendor.bundle.js?v=14"></script>-->
+<!--<script src="http://cdn.o3oNet.com/ff/js/bundle.js?v=14"></script>-->
+
+<!--<script>-->
+    <!--document.write('<scri' + 'pt src="/ff/js/vendor.js?v=11' + new Date().getTime() +'" type="text/javascript"></s' + 'cript>');-->
+<!--</script>-->
+<!--<script>-->
+    <!--document.write('<scri' + 'pt src="/ff/js/vendor.bundle.js?v=11' + new Date().getTime() + '" type="text/javascript"></s' + 'cript>');-->
+<!--</script>-->
+<!--<script>-->
+    <!--document.write('<scri' + 'pt src="/ff/js/bundle.js?v=11' + new Date().getTime() +'" type="text/javascript"></s' + 'cript>');-->
+<!--</script>-->
+
+<script>
+document.write('<scri' + 'pt src="/ff/dist/bundle.js?v=11' + new Date().getTime() +'" type="text/javascript"></s' + 'cript>');
+</script>
+
+
+
+<!--<script src="/ff/js/vendor.js?v=14"></script>-->
+<!--<script src="/ff/js/vendor.bundle.js?v=14"></script>-->
+<!--<script src="/ff/js/bundle.js?v=14"></script>-->
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+
+
+    $(function () {
+
+        var url = window.location.href.split('#')[0];
+        $.ajax({
+            type: "post",
+            url: "/ff/wechat/oauthJSApi/",
+            async: true,//同步
+            data: {
+                url: url
+            },
+            success: function (dataObj) {
+                wx.config({
+                    debug: false,
+                    appId: dataObj.jsonData.appId,
+                    timestamp: dataObj.jsonData.timestamp,
+                    nonceStr: dataObj.jsonData.nonceStr,
+                    signature: dataObj.jsonData.signature,
+                    jsApiList: [
+                        // 所有要调用的 API 都要加到这个列表中
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage'
+                    ]
+                });
+            }, error: function (err) {
+                alert("error");
+                $.ajax({
+                    type: "post",
+                    url: "/ff/wechat/oauthJSApi/",
+                    async: true,//同步
+                    data: {
+                        url: url
+                    },
+                    success: function (dataObj) {
+                        wx.config({
+                            debug: false,
+                            appId: dataObj.jsonData.appId,
+                            timestamp: dataObj.jsonData.timestamp,
+                            nonceStr: dataObj.jsonData.nonceStr,
+                            signature: dataObj.jsonData.signature,
+                            jsApiList: [
+                                // 所有要调用的 API 都要加到这个列表中
+                                'onMenuShareTimeline',
+                                'onMenuShareAppMessage'
+                            ]
+                        });
+                    }, error: function (err) {
+
+                    }
+                });
+            }
+        });
+
+        wx.ready(function () {
+            debugger;
+            // 在这里调用 API
+            // 2. 分享接口
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+            wx.onMenuShareAppMessage({
+                title: '测试',
+                desc: 'demo',
+                link: "http://www.baidu.com",
+                imgUrl: "{{repeatInfo.repeatImg}}",
+                trigger: function (res) {
+                    alert("aaa");
+                },
+                success: function (res) {
+                    alert("ceshi111");
+                },
+                cancel: function (res) {
+                },
+                fail: function (res) {
+                }
+            });
+
+
+        });
+
+    });
+
+
+</script>
+
+</body>
+</html>

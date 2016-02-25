@@ -1,0 +1,11 @@
+node_modules
+
+public/dist
+
+public/Static_Full_Version
+
+public/**/dist
+
+.idea
+
+

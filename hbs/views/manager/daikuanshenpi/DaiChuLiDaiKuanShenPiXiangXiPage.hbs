@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    {{> managerMeta}}
+    {{> managerHeaderLink}}
+
+    <style type="text/css">
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="wrapper" class="gray-bg">
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+        <div class="row m-b-lg m-t-lg">
+            <div class="col-md-6">
+
+                <div class="profile-image">
+                    <img src="{{userLoanApprovalingData.userInfo.wechatInfo.headimgurl}}"
+                         class="img-circle circle-border m-b-md" alt="profile">
+                </div>
+                <div class="profile-info">
+                    <div class="">
+                        <div>
+                            <h2 class="no-margins">
+                                {{userLoanApprovalingData.userInfo.wechatInfo.realname}}
+                            </h2>
+                            <h4>{{userLoanApprovalingData.userInfo.wechatInfo.nickname}}</h4>
+                            <small>
+                                {{userLoanApprovalingData.userInfo.wechatInfo.uuid}}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                统计区域
+            </div>
+            <div class="col-md-3">
+                图标区域
+            </div>
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <div class="ibox">
+                    <div class="ibox-content">
+
+                        显示备注信息
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-4">
+
+                显示上传的文件信息
+
+            </div>
+
+            <div class="col-lg-5 m-b-lg">
+                <div id="vertical-timeline" class="vertical-container light-timeline no-margins">
+
+                    {{#each userLoanApprovalingData.loanApprovals.steps}}
+
+
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+
+                            <div class="vertical-timeline-content">
+
+                                <div class="well">
+                                    <h2>{{title}}</h2>
+                                </div>
+
+                                <blockquote>
+                                <p>
+
+                                    {{#compare status '==' 'success'}}
+                                        <p>
+                                            <span class="label label-success">成功</span>
+                                        </p>
+                                    {{/compare}}
+
+                                    {{#compare status '==' 'wait'}}
+                                        <p>
+                                            <span class="label label-Plain">等待</span>
+                                        </p>
+                                    {{/compare}}
+
+                                    {{#compare status '==' 'sthWrong'}}
+                                        <p>
+                                            <span class="label label-Danger">未通过</span>
+                                        </p>
+                                    {{/compare}}
+
+                                    {{#compare status '==' 'error'}}
+                                        <p>
+                                            <span class="label label-Warning">失败</span>
+                                        </p>
+                                    {{/compare}}
+
+                                    {{#compare status '==' 'ing'}}
+                                        <p>
+                                            <span class="label label-info">进行中</span>
+                                        </p>
+                                    {{/compare}}
+
+                                    </p>
+                                </blockquote>
+
+
+
+
+                                {{#compare status '==' 'success'}}
+
+                                    <form class="form-horizontal">
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">大约需要时间:</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="text" placeholder="{{info}}" disabled=""
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="hr-line-dashed"></div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">审批意见:</label>
+
+                                            <div class="col-sm-9">
+                                                <input type="text" placeholder="{{showMsg}}" disabled=""
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="hr-line-dashed"></div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">审核状态:</label>
+
+                                            <div class="col-sm-9 ">
+                                                <small class="label label-success">
+                                                    <i class="fa fa-check-square-o"></i>
+                                                    已确认
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                {{else}}
+
+                                    {{#compare status '==' 'wait'}}
+
+                                        <form class="form-horizontal">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">大约需要时间:</label>
+
+                                                <div class="col-sm-9">
+                                                    <input type="text" placeholder="{{info}}" disabled=""
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">审批意见:</label>
+
+                                                <div class="col-sm-9">
+                                                    <input type="text" placeholder="{{showMsg}}" disabled=""
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">审核状态:</label>
+
+                                                <div class="col-sm-9 ">
+                                                    <div class="label label-Information">
+                                                        <i class="fa fa fa-history"></i>
+                                                        等待中
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    {{else}}
+
+                                        <form class="form-horizontal">
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">大约需要时间:</label>
+
+                                                <div class="col-sm-9">
+                                                    <input type="text" placeholder="{{info}}" id="info"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">审批意见:</label>
+
+                                                <div class="col-sm-9">
+                                                    <input type="text" placeholder="{{showMsg}}" id="showMsg"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">审核状态:</label>
+
+                                                <div class="col-sm-9">
+                                                    <select class="form-control m-b selector" name="account">
+                                                        <option value="success">同意</option>
+                                                        <option value="error">不同意</option>
+                                                        <option value="sthWrong">待定错误</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-4">
+
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <a class="btn btn-primary" id="submitInfo">提交</a>
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+
+                                    {{/compare}}
+
+                                {{/compare}}
+
+                            </div>
+                        </div>
+
+
+                    {{/each}}
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#submitInfo").click(function () {
+
+            var data = {};
+
+            var uuid = "{{userLoanApprovalingData.uuid}}";
+            data.stepIndex = {{userLoanApprovalingData.loanApprovals.currentStepIndex}};
+
+            var info = $("#info").val();
+            var changeShowMsg = $("#showMsg").val();
+            data.changeStatus = $(".selector").val();
+
+            if (!changeShowMsg) {
+                swal({
+                    title: "审核意见不能为空",
+                    text: "可简单写通过"
+                });
+                return;
+            }
+
+            if (info) {
+                data.info = info;
+            }
+
+            if (changeShowMsg) {
+                data.changeShowMsg = changeShowMsg;
+            }
+
+
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                escapeHtml: true,
+                timeOut: 4000
+            };
+
+
+            var url = "/sylj/v1/loanApprovals/ing/" + uuid;
+
+            $.ajax({
+                url: url,
+                type: 'PATCH',
+                data: data,
+                success: function (data) {
+
+                    if (data.code != 0) {
+                        toastr.warning(data.error.title, data.error.detail);
+                    } else {
+                        toastr.options.timeOut = 3000;
+                        toastr.info("处理成功,马上为您刷新页面!");
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 3000);
+                    }
+                }
+            });
+
+
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

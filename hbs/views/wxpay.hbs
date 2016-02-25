@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="o3oThumb">
+    <meta name="keywords" content="o3oThumb">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>o3oThumb</title>
+    <link rel="stylesheet" href="/ff/css/all.css"/>
+</head>
+<body>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<div>
+    <a href="javascript:void(0);" onclick="pay()">微信支付</a>
+</div>
+
+<script>
+    function pay() {
+        alert("start1");
+        wx.chooseWXPay({
+            timestamp: "{{payargs.timeStamp}}", // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+            nonceStr:"{{payargs.nonceStr}}", // 支付签名随机串，不长于 32 位
+            package:"{{payargs.package}}", // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+            signType:"{{payargs.signType}}", // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+            paySign: "{{payargs.paySign}}", // 支付签名
+            success: function (res) {
+                // 支付成功后的回调函数
+                //支付成功
+                alert("支付成功");
+            }
+        });
+    }
+    $(function () {
+        var url = window.location.href.split('#')[0];
+        alert(url);
+        $.ajax({
+            type: "post",
+            url: "http://www.o3onet.com/ff/wechat/oauthJSApi/",
+            async: true,//同步
+            data: {
+                url: url
+            },
+            success: function (dataObj) {
+                wx.config({
+                    debug: true,
+                    appId: dataObj.jsonData.appId,
+                    timestamp: dataObj.jsonData.timestamp,
+                    nonceStr: dataObj.jsonData.nonceStr,
+                    signature: dataObj.jsonData.signature,
+                    jsApiList: [
+                        // 所有要调用的 API 都要加到这个列表中
+                        'onMenuShareTimeline',
+                        'onMenuShareAppMessage'
+                    ]
+                });
+            }, error: function (err) {
+
+            }
+        });
+
+    });
+
+    wx.ready(function () {
+        alert("weixin ready");
+
+
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+.container {
+
+  background-color: #f1f1f1;
+
+  .mainContainer {
+
+  }
+
+  .formContainer {
+    margin-top: 10px;
+
+    .title {
+      margin: 0 12px;
+      border-bottom: 1px rgba(255, 198, 85, 0.4) solid;
+      height: 42px;
+
+      .chineseTitle {
+        height: 42px;
+        padding-left: 15px;
+        border-left: 3px solid #ff3c25;
+        font-size: 16px;
+        line-height: 42px;
+        color: #0b0b0b;
+
+      }
+
+    }
+
+    .infoShow {
+      margin: 0 12px;
+      padding: 8px 0;
+      border-bottom: 1px rgba(255, 198, 85, 0.4) solid;
+
+      .infoTitle {
+        text-align: center;
+
+        .chineseTitle {
+
+          span {
+            font-size: 15px;
+            color: #1b1b1b;
+          }
+
+        }
+
+      }
+
+      .infoContent {
+        margin-top: 6px;
+        padding-left: 6px;
+        span {
+          color: #0b0b0b;
+          font-size: 14px;
+          opacity: 0.9;
+          font-family: "Microsoft YaHei", "宋体", Arial, Helvetica, sans-serif;
+          font-style: italic;
+        }
+      }
+
+    }
+
+    .infoInput {
+      margin: 0 12px;
+      padding: 8px 0;
+      border-bottom: 1px rgba(255, 198, 85, 0.4) solid;
+
+      .infoTitle {
+        text-align: center;
+
+        .chineseTitle {
+
+          span {
+            font-size: 15px;
+            color: #1b1b1b;
+          }
+
+        }
+        .englishTitle {
+          margin-left: 8px;
+
+          span {
+            font-size: 12px;
+            font-family: cursive;
+            color: #828282;
+          }
+        }
+
+      }
+
+      .inputInfo {
+
+        .weui_input {
+          margin-top: 6px;
+          width: 100%;
+          border: 0;
+          outline: 0;
+          -webkit-appearance: none;
+          font-size: 16px;
+        }
+
+      }
+
+    }
+
+    .roomInfo {
+
+    }
+
+    .baseInfo {
+
+      .infoShow {
+        .infoContent {
+          span {
+            color: #ff0000;
+            font-size: 15px;
+            opacity: 0.9;
+            font-family: "Microsoft YaHei", "宋体", Arial, Helvetica, sans-serif;
+            font-style: italic;
+          }
+        }
+      }
+
+    }
+
+    .phoneNum {
+
+      .weui_input {
+        margin-top: 6px;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        -webkit-appearance: none;
+        font-size: 16px;
+      }
+
+      .phoneInput {
+        margin: 0 6px;
+        padding: 8px 0;
+        border: 1px;
+        background-color: #ffffff;
+        border-bottom: 1px #dbdbec solid;
+
+        .tit1 {
+          font-size: 15px;
+          margin: 0 15px;
+        }
+
+        label {
+          font-size: 16px;
+        }
+
+      }
+
+      .identityInput {
+        margin: 0 6px;
+        padding: 8px 0 2px 0;
+        border: 1px;
+        background-color: #ffffff;
+
+        .tit1 {
+          font-size: 14px;
+          margin: 0 15px;
+        }
+
+        .tit2 {
+          font-size: 12px;
+          line-height: 35px;
+        }
+
+        input {
+        }
+
+        .btn1 {
+          position: relative;
+          display: block;
+          box-sizing: border-box;
+          font-size: 12px;
+          text-align: center;
+          text-decoration: none;
+          border-radius: 5px;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+          color: #5a5a5a;
+          border: 1px solid #5a5a5a;
+          height: 35px;
+          overflow: hidden;
+          margin-top: 5px;
+        }
+
+      }
+    }
+
+    .orderContainer {
+      margin-top: 5px;
+      padding-bottom: 8px;
+      .button_sp_area {
+        width: 70%;
+        padding: 8px 0;
+        margin: 0 auto;
+        text-align: justify;
+        font-size: 0;
+
+        .iconStyle {
+
+          i {
+            margin-right: 8px;
+            color: #1a1a1a;
+            font-size: 20px;
+            -webkit-transition: font-size 0.25s ease-out 0s;
+            -moz-transition: font-size 0.25s ease-out 0s;
+            transition: font-size 0.25s ease-out 0s;
+          }
+        }
+
+      }
+    }
+
+  }
+
+}
