@@ -41,6 +41,7 @@ exports.authorizePageBack = function (req, res, next) {
     var authorization_code = req.query.auth_code;
 
     component.getAccessToken(function (err, component_access_token) {
+
         if (err) return next(new Error(" @@@ --- 获取第三方平台access_token时发生了错误! " + err.toString() + " --- @@@ "));
 
         component.queryAuth(authorization_code, function (err, authorization_info) {

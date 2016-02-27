@@ -65,7 +65,7 @@ exports.postAccept = function (req, res, next) {
                 wxComponentsUtil.svaeComponentVerifyTicket(req.weixin.ComponentVerifyTicket, function (err, data) {
 
                     if (err) console.error(err);
-                    console.log(data);
+                    if (!err) console.log(" @@@ --- 设置微信开放平台component_verify_ticket 成功 --- @@@" + data.toString());
                     res.send("success");
 
                 });
@@ -90,7 +90,9 @@ exports.postAccept = function (req, res, next) {
                 res.send("success");
 
             } else {
+
                 res.send("success");
+                
             }
 
 
