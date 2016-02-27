@@ -44,56 +44,19 @@ exports.getComponentVerifyTicket = function (callback) {
  * @param req
  * @param cb
  */
-exports.svaeComponentVerifyTicket = function (req, cb) {
+exports.svaeComponentVerifyTicket = function (component_verify_ticket, callback) {
+
+    console.log("@@@ ------ get component_verify_ticket ------------ @@@" + component_verify_ticket);
 
     /**
-     * 从req中获取xmldata
+     * 保存数据
      */
-    wechatUtils.getMessage(req, function (err, result) {
-
-        if (err) {
-            err.name = 'BadMessage' + err.name;
-            cb(err);
-            return;
-        }
-        req.weixin = wechatUtils.formatMessage(result.xml);
-
-        var cryptor = new WXBizMsgCrypt(token, encodingAESKey, component_appid);
-        var decrypted = cryptor.decrypt(req.weixin.Encrypt);
-
-        var messageWrapXml = decrypted.message;
-        if (messageWrapXml === '') {
-            var error = "getMessage messageWrapXml component_verify_ticket Invalid";
-            cb(error);
-            return;
-        }
-
-        req.weixin_xml = messageWrapXml;
-        xml2js.parseString(messageWrapXml, {trim: true}, function (err, result) {
-            if (err) {
-                err.name = 'BadMessage' + err.name;
-                cb.call(this, err);
-                return;
-            }
-            req.weixin = formatMessage(result.xml);
-            var component_verify_ticket = req.weixin.ComponentVerifyTicket;
-
-            console.log("@@@ ------ get component_verify_ticket ------------ @@@" + component_verify_ticket);
-
-            /**
-             * 保存数据
-             */
-            app.models.wechatcomponentverifyticket.create({
-                component_appid: component_appid,
-                component_verify_ticket: component_verify_ticket
-            }, function (err, model) {
-                if (err) return callback(err);
-                callback(null, model)
-            });
-
-
-        });
-
+    app.models.wechatcomponentverifyticket.create({
+        component_appid: component_appid,
+        component_verify_ticket: component_verify_ticket
+    }, function (err, model) {
+        if (err) return callback(err);
+        callback(null, model)
     });
 
 }
