@@ -11,7 +11,7 @@ var wechat = require('wechat');
 var request = require('request');
 var encoding = require('encoding');
 
-var httpHelper = require('../../../lib/httpHelper.js');
+var httpHelper = require('../../../../lib/httpHelper.js');
 
 var wechatConfig = require("../../../config/wechatConfig.js");
 var appConfig = require("../../../config/appConfig.js");

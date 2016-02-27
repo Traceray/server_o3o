@@ -34,6 +34,10 @@ var promotInfo = Waterline.Collection.extend({
             type: 'string',
             required: false
         },
+        authorizeType: {//微信介入平台方式  "wechat_component"  "wechat_urlbind"  "website"
+            type: 'string',
+            required: true
+        },
         name: {
             type: 'string',
             required: false

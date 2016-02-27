@@ -24,6 +24,10 @@ orm.loadCollection(wechatComponentAuthorizer);
 var wechatComponentAuthorizerAccessToken = require("../models/wechat/wechat.component.authorizer_access_token.model.js");
 orm.loadCollection(wechatComponentAuthorizerAccessToken);
 
+var wechatAccessToken = require("../models/wechat/wechat.access_token.model.js");
+orm.loadCollection(wechatAccessToken);
+
+
 module.exports = orm;
 
 

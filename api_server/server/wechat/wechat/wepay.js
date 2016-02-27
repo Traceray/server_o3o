@@ -4,9 +4,9 @@
 
 'use strict';
 
-var client = require('../../../lib/connRedis1.js');
-var weUtil = require("../../../utils/weUtil/weUtil.js");
-var util = require("../../../utils/util.js");
+var client = require('../../../../lib/connRedis1.js');
+var weUtil = require("../../../../utils/weUtil/weUtil.js");
+var util = require("../../../../utils/util.js");
 var wechatConfig = require("config").get("wechat");
 var fs = require("fs");
 

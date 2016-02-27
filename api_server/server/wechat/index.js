@@ -5,19 +5,30 @@
 
 'use strict';
 
+
+/**
+ *
+ * @type {exports|module.exports}
+ */
+exports.oauth = require("./oauth.js"); //授权获取微信信息相关
+exports.oauthAuthorizeURL = require("./oauthAuthorizeURL.js");
+
+
+/**
+ *wechat
+ */
+
 //exports.wepay = require('./wepay.js');
-
 //exports.wechat = require('./wechat.js');
-
 //exports.wxapi = require('./wxapi.js');
 
-exports.oauth = require("./oauth.js");
 
+/**
+ * component
+ */
+exports.comptAccept = require("./component/accept.js");//接受微信开放平台推送信息
 
-
-
-
-
+exports.comptAuthorizePage = require("./component/authorizePage.js");
 
 
 

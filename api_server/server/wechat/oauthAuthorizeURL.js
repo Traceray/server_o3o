@@ -2,6 +2,7 @@
  * Created by o3oNet on 16-2-27.
  */
 
+
 var OAuth = require('wechat-oauth');
 var Component = require("wechat-component");
 
@@ -21,26 +22,26 @@ var protocol = baseInfoConfig.protocol;
 
 
 /**
- *
+ * 获取微信授权微信URL
  * @param req
  * @param res
  * @param next
  */
-exports.oauth = function (req, res, next) {
+exports.promotOauthAuthorizeURL = function (req, res, next) {
 
     var promotid = req.params.promotid;
 
-    //TODO::RESTFUL
     /**
      * 根据活动promotid来获取信息
      * @type {string}
      */
 
-    var scope = "snsapi_userinfo";
-    var redirectUrl = "promotUrl";
     var appid = "wxbc9b7da0b82ac2b8";
     var secret = "";
+    var componentid = "";
     var authorizeType = "";
+    //TODO::校验 promotid的合法性
+
 
     //检验授权方式
     if (authorizeType == "wechat_component") {
@@ -51,35 +52,15 @@ exports.oauth = function (req, res, next) {
         return next(new Error(" @@@ --- 该活动并为指定微信公众平台授权方式或是授权信息已经失效 --- @@@ "));
     }
 
-    oauthApi.getAccessToken(req.query.code, function (err, result) {
-        if (err) return next(new Error(" @@@ --- 获取用户微信授权信息失败 --- @@@ ") + err.toString());
+    if (!promotid) return next(new Error(" @@@--- 错误码1035,微信授权时获取活动编号失败  ---@@@ "));
 
-        var accessToken = result.data.access_token;
-        var openid = result.data.openid;
+    var oauthApi = new OAuth(appid, secret, wxUtil.getWechatAccessToken(appid), wxUtil.saveWechatAccessToken(appid));
 
-        //TODO::
-        /**
-         *
-         */
-        if (scope != "snsapi_userinfo") {//获取基本信息
+    var redirectURI = protocol + websiteUrl + "/wechat/oauth/" + promotid;
 
-            return res.redirect(redirectUrl);
+    var authorizeURL = oauthApi.getAuthorizeURL(redirectURI, "state", "scope");
 
-        } else {//获取微信信息
-
-
-            oauthApi.getUser(openid, function (err, result) {
-                if (err) return next(new Error(" @@@ --- 获取用户微信资料信息失败 --- @@@ ") + err.toString());
-                var userInfo = result;
-
-                return res.redirect(redirectUrl);
-            });
-
-
-        }
-
-
-    });
+    res.redirect(authorizeURL);
 
 
 }

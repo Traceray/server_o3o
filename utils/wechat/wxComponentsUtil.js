@@ -8,7 +8,7 @@
 var WXBizMsgCrypt = require('wechat-crypto');
 var xml2js = require('xml2js');
 
-var wechatUtils = require("./utils.js");
+var wechatUtils = require("./wechatUtils.js");
 
 
 var componentConfig = require("config").get("wechat.componentConfig");
@@ -211,7 +211,7 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, token, callback)
 
     return function (token, callback) {
 
-        console.log("@@@ ------ get authorizerAccessToken ------------ @@@" + token);
+        console.log("@@@ ------ get authorizerAccessToken ------------ @@@" + token.toString());
 
         /**
          * 保存数据
