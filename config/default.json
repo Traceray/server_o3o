@@ -1,13 +1,13 @@
 {
   "app": {
     "baseInfo": {
-      "name": "o3o_sylianjia_wx",
-      "appName": "sylj",
+      "name": "o3o_server_wx",
+      "appName": "ztg",
       "prefixPath": "o3o",
       "websiteUrl": "localhost:9100",
       "protocol": "http://",
       "cdnDomainUrl": "",
-      "apiBaseUrl": "/sylj"
+      "apiBaseUrl": "/ztg"
     },
     "multipleShare": {
       "sysName": "o3oNet"
