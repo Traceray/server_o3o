@@ -9,7 +9,7 @@ var NODE_UUID = require('node-uuid');
 var promotInfo = Waterline.Collection.extend({
     identity: 'promotInfo',
     tableName: "promot_info",
-    connection: ['redis'],
+    connection: ['ztg-mysql'],
     migrate: 'alter',
     autoPK: true,
     schema: true,
@@ -44,10 +44,14 @@ var promotInfo = Waterline.Collection.extend({
         },
         templName: {
             type: 'string',
-            required: false
+            required: true
+        },
+        templType: {
+            type: 'string',
+            required: true
         },
         merchantid: {
-            type: 'string',
+            type: 'json',
             required: false
         },
         status: {

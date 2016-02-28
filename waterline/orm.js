@@ -27,6 +27,15 @@ orm.loadCollection(wechatComponentAuthorizerAccessToken);
 var wechatAccessToken = require("../models/wechat/wechat.access_token.model.js");
 orm.loadCollection(wechatAccessToken);
 
+/**
+ * 活动信息
+ */
+var promotInfo = require("../models/promot/promot.info.server.model.js");
+orm.loadCollection(promotInfo);
+
+var promotPageInfo = require("../models/promot/promot.page.server.model.js");
+orm.loadCollection(promotPageInfo);
+
 
 module.exports = orm;
 

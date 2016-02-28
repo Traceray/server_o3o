@@ -6,9 +6,9 @@
 var Waterline = require('waterline');
 var NODE_UUID = require('node-uuid');
 
-var userWechatInfo = Waterline.Collection.extend({
-    identity: 'userWechatInfo',
-    tableName: "user_wechat_info",
+var promotInfo = Waterline.Collection.extend({
+    identity: 'promotInfo',
+    tableName: "promot_info",
     connection: ['ztg-mysql'],
     migrate: 'alter',
     autoPK: true,
@@ -16,97 +16,86 @@ var userWechatInfo = Waterline.Collection.extend({
     autoCreatedAt: true,
     autoUpdatedAt: true,
     attributes: {
-        userid: {
+        promotid: {
             type: 'integer',
             autoIncrement: true,
             primaryKey: true,
             unique: true
         },
-        uuid: {
-            type: 'uuid',
-        },
-        openid: {
-            type: 'string',
-            required: true
-        },
-        unionid: {
+        componentid: {
             type: 'string',
             required: false
         },
         appid: {
             type: 'string',
+            required: false
+        },
+        secret: {
+            type: 'string',
+            required: false
+        },
+        authorizeType: {//微信介入平台方式  "wechat_component"  "wechat_urlbind"  "website"
+            type: 'string',
             required: true
         },
-        componentid: {
+        name: {
             type: 'string',
             required: false
         },
-        subscribe: {
+        templName: {
             type: 'string',
             required: false
         },
-        nickname: {
+        merchantid: {
             type: 'string',
             required: false
         },
-        sex: {
+        status: {
             type: 'string',
             required: false
         },
-        city: {
+        createAdminName: {
             type: 'string',
             required: false
         },
-        province: {
-            type: 'string',
+        startTime: {
+            type: 'date',
             required: false
         },
-        country: {
-            type: 'string',
+        endTime: {
+            type: 'date',
             required: false
         },
-        language: {
-            type: 'string',
-            required: false
-        },
-        headimgurl: {
+        mainUrl: {
             type: 'url',
             required: false
         },
-        subscribe_time: {
+        withoutLoginUrl: {
+            type: 'url',
+            required: false
+        },
+        md5Key: {
             type: 'string',
             required: false
         },
-        remark: {
+        base64: {
             type: 'string',
             required: false
         },
-        groupid: {
+        useWeChat0auth: {
             type: 'string',
             required: false
         },
+        notAvailable: {
+            type: 'string',
+            required: false
+        }
     },
     beforeCreate: function (v, cb) {
 
-        console.log('bb -- ' + v.uuid)
-
-        if (!v.uuid) {
-            v.uuid = NODE_UUID.v1();
-        }
-
         return cb();
-        //encrypt(values.password, function (err, password) {
-        //    if (err) return cb(err);
-        //
-        //    values.password = password;
-        //    cb();
-        //});
-        //
-        //return cb();
-    },
-    print: function (v) {
-        console.log('\tOpenid:', v.openid, 'create at:', v.uuid);
+
     }
 });
 
-module.exports = userWechatInfo;
+module.exports = promotInfo;

@@ -2,7 +2,7 @@
  * Created by o3oNet on 16-1-24.
  */
 
-var users = require("./wechat-user.js");
+var users = require("./user.wechat.js");
 
 /**
  * 获取单个用户的微信信息

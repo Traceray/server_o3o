@@ -3,7 +3,7 @@
  */
 
 
-var wechatUtils = require("./wechatUtils.js");
+var wechatUtils = require("../../../../utils/wechat/wechatUtils.js");
 var wxComponentsUtil = require("../../../../utils/wechat/wxComponentsUtil.js");
 
 var componentConfig = require("config").get("wechat.componentConfig");
@@ -39,7 +39,7 @@ exports.postAccept = function (req, res, next) {
      * 从req中获取xmldata
      */
     wechatUtils.getMessage(req, function (err, result) {
-        if (err) return next(new Error("BadMessage" + err.toString()));
+        if (err) return next(new Error({code: "10001", msgInfo: "BadMessage", error: err}));
 
         req.weixin = wechatUtils.formatMessage(result.xml);
 
@@ -52,7 +52,7 @@ exports.postAccept = function (req, res, next) {
 
         req.weixin_xml = messageWrapXml;
         xml2js.parseString(messageWrapXml, {trim: true}, function (err, result) {
-            if (err) return next(new Error("BadMessage" + err.toString()));
+            if (err) return next(new Error({code: "10002", msgInfo: "BadMessage", error: err}));
 
             req.weixin = wechatUtils.formatMessage(result.xml);
 
@@ -65,7 +65,7 @@ exports.postAccept = function (req, res, next) {
                 wxComponentsUtil.svaeComponentVerifyTicket(req.weixin.ComponentVerifyTicket, function (err, data) {
 
                     if (err) console.error(err);
-                    if (!err) console.log(" @@@ --- 设置微信开放平台component_verify_ticket 成功 --- @@@" + data.toString());
+                    if (!err) console.log(" @@@ --- 设置微信开放平台 component_verify_ticket 成功 --- @@@" + data.toString());
                     res.send("success");
 
                 });
@@ -92,7 +92,7 @@ exports.postAccept = function (req, res, next) {
             } else {
 
                 res.send("success");
-                
+
             }
 
 

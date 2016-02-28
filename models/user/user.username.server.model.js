@@ -9,7 +9,7 @@ var NODE_UUID = require('node-uuid');
 var userUserNameInfo = Waterline.Collection.extend({
     identity: 'userUserNameInfo',
     tableName: "userUserNameInfo",
-    connection: ['redis'],
+    connection: ['ztg-mysql'],
     migrate: 'alter',
     autoPK: true,
     schema: true,

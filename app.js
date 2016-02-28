@@ -41,6 +41,13 @@ app.oauth = oauthserver({
 
 
 /**
+ * 全局错误
+ */
+
+app.sendJsonObj = require("./code/sendJsonObj.js");
+
+
+/**
  * 保存全局配置文件
  */
 

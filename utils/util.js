@@ -72,6 +72,32 @@ var util = {
             return true;
         }
         else return false;
+    },
+    dateAdd: function (date, strInterval, Number) {  //参数分别为日期对象，增加的类型，增加的数量
+        var dtTmp = date;
+        switch (strInterval) {
+            case 'second':
+            case 's' :
+                return new Date(Date.parse(dtTmp) + (1000 * Number));
+            case 'minute':
+            case 'n' :
+                return new Date(Date.parse(dtTmp) + (60000 * Number));
+            case 'hour':
+            case 'h' :
+                return new Date(Date.parse(dtTmp) + (3600000 * Number));
+            case 'day':
+            case 'd' :
+                return new Date(Date.parse(dtTmp) + (86400000 * Number));
+            case 'week':
+            case 'w' :
+                return new Date(Date.parse(dtTmp) + ((86400000 * 7) * Number));
+            case 'month':
+            case 'm' :
+                return new Date(dtTmp.getFullYear(), (dtTmp.getMonth()) + Number, dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());
+            case 'year':
+            case 'y' :
+                return new Date((dtTmp.getFullYear() + Number), dtTmp.getMonth(), dtTmp.getDate(), dtTmp.getHours(), dtTmp.getMinutes(), dtTmp.getSeconds());
+        }
     }
 }
 

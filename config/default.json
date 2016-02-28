@@ -13,6 +13,10 @@
       "sysName": "o3oNet"
     }
   },
+  "apiServer": {
+    "promotinfo": "http://localhost:9100/ztg/v3/promotinfo",
+    "promoPagetinfo": "http://localhost:9100/ztg/v3/promotPageinfo"
+  },
   "apiStore": {
     "msg106Apikey": "92d19509c2d0a19a2b8d9df08a7eb31a"
   },
@@ -44,9 +48,9 @@
       },
       "promotDataBase": {
         "host": "rdsjiqfafzrzrz2o.mysql.rds.aliyuncs.com",
-        "user": "promotion",
-        "password": "promotiono3oNet",
-        "database": "promotions",
+        "user": "o3o_server_ztg",
+        "password": "o3o_server_ztg",
+        "database": "o3o_server_ztg",
         "port": 3306,
         "connectionLimit": 3
       },
@@ -61,11 +65,11 @@
     },
     "mongoDB": {
       "host": "localhost",
-      "port": 32770,
+      "port": 32768,
       "user": "",
       "password": "",
       "database": "",
-      "db": "localhost:32770"
+      "db": "localhost:32768"
     }
   },
   "wechat": {

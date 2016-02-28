@@ -19,6 +19,7 @@ var redisAdapter = require('sails-redis');
 var config = require('config');
 //mysql;
 var mysqlConfig = config.get('database.mysqlConfig');
+var ztgConfig = mysqlConfig.ztgDataBase;
 var infoDbConfig = mysqlConfig.infoDataBase;//基本信息数据库
 var promotConfig = mysqlConfig.promotDataBase;//promotions 数据库连接池
 //mongodb
@@ -53,12 +54,12 @@ var wlconfig = {
             pool: true,
             waitForConnections: true,
 
-            connectionLimit: infoDbConfig.connectionLimit,
-            host: infoDbConfig.host,
-            user: infoDbConfig.user,
-            password: infoDbConfig.password,
-            database: infoDbConfig.database,
-            port: infoDbConfig.port,
+            connectionLimit: ztgConfig.connectionLimit,
+            host: ztgConfig.host,
+            user: ztgConfig.user,
+            password: ztgConfig.password,
+            database: ztgConfig.database,
+            port: ztgConfig.port,
 
             // Optional
             charset: 'utf8',

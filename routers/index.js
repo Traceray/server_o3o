@@ -21,6 +21,9 @@ routers.servers = require('./server/servers.js');//
 routers.o3o = require('./client/o3o.js');//
 routers.manager = require('./client/manager.js');//
 
+//活动信息配置
+routers.promot = require('./server/promot.js');//
+
 //加载权限控制
 //权限控制在各个分节点里
 router.use('/server', routers.servers);//核心引擎路由
@@ -30,6 +33,8 @@ router.use("/manager", routers.manager);//相应的静态文件应该在public/m
 router.use("/cgi-bin", routers.cgiBin);//安全相关
 router.use("/v1", routers.v1API);//API
 router.use("/v3", routers.v3API);//API
+
+router.use("/p", routers.promot);//活动配置
 
 
 module.exports = router;

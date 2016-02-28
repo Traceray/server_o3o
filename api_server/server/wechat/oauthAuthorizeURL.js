@@ -49,10 +49,18 @@ exports.promotOauthAuthorizeURL = function (req, res, next) {
     } else if (authorizeType == "wechat_urlbind") {
         var oauthApi = new OAuth(appid, secret, wxUtil.getWechatAccessToken(appid), wxUtil.saveWechatAccessToken(appid));
     } else {
-        return next(new Error(" @@@ --- 该活动并为指定微信公众平台授权方式或是授权信息已经失效 --- @@@ "));
+        return next(new Error({
+            code: "10101",
+            msgInfo: " @@@ --- 该活动并为指定微信公众平台授权方式或是授权信息已经失效 --- @@@ ",
+            error: {}
+        }));
     }
 
-    if (!promotid) return next(new Error(" @@@--- 错误码1035,微信授权时获取活动编号失败  ---@@@ "));
+    if (!promotid) return next(new Error({
+        code: "10102",
+        msgInfo: "@@@--- 微信授权时获取活动编号失败  ---@@@ ",
+        error: {}
+    }));
 
     var oauthApi = new OAuth(appid, secret, wxUtil.getWechatAccessToken(appid), wxUtil.saveWechatAccessToken(appid));
 

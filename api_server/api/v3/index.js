@@ -7,6 +7,10 @@
 
 exports.users = require("./users");
 
+exports.promotInfo = require("./promot/promot.info.control.js");
+
+exports.promotPageInfo = require("./promot/promot.page.control.js");
+
 
 
 
