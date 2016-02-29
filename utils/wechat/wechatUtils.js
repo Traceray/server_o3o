@@ -3,6 +3,9 @@
  */
 
 
+var xml2js = require('xml2js');
+
+
 /*!
  * 从微信的提交中提取XML文件
  */

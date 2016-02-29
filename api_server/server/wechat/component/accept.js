@@ -2,6 +2,8 @@
  * Created by o3oNet on 16-2-26.
  */
 
+var WXBizMsgCrypt = require('wechat-crypto');
+var xml2js = require('xml2js');
 
 var wechatUtils = require("../../../../utils/wechat/wechatUtils.js");
 var wxComponentsUtil = require("../../../../utils/wechat/wxComponentsUtil.js");
@@ -39,7 +41,8 @@ exports.postAccept = function (req, res, next) {
      * 从req中获取xmldata
      */
     wechatUtils.getMessage(req, function (err, result) {
-        if (err) return next(new Error({code: "10001", msgInfo: "BadMessage", error: err}));
+
+        if (err) return res.send(new app.sendJsonObj(10001, "BadMessage !", err).send(null, __dirname, 1, "json"));
 
         req.weixin = wechatUtils.formatMessage(result.xml);
 
@@ -52,7 +55,8 @@ exports.postAccept = function (req, res, next) {
 
         req.weixin_xml = messageWrapXml;
         xml2js.parseString(messageWrapXml, {trim: true}, function (err, result) {
-            if (err) return next(new Error({code: "10002", msgInfo: "BadMessage", error: err}));
+
+            if (err) return res.send(new app.sendJsonObj(10002, "BadMessage !", err).send(null, __dirname, 1, "json"));
 
             req.weixin = wechatUtils.formatMessage(result.xml);
 
