@@ -64,12 +64,12 @@
       }
     },
     "mongoDB": {
-      "host": "localhost",
-      "port": 32768,
+      "host": "10.44.11.98",
+      "port": 32770,
       "user": "",
       "password": "",
       "database": "",
-      "db": "localhost:32768"
+      "db": "10.44.11.98:32770"
     }
   },
   "wechat": {

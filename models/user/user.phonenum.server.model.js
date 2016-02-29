@@ -10,6 +10,7 @@ var userPhoneNumInfo = Waterline.Collection.extend({
     identity: 'userPhoneNumInfo',
     tableName: "userPhoneNumInfo",
     connection: ['ztg-mysql'],
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,

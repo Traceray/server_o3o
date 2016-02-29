@@ -10,6 +10,7 @@ var userWechatInfo = Waterline.Collection.extend({
     identity: 'userWechatInfo',
     tableName: "user_wechat_info",
     connection: ['ztg-mysql'],
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,

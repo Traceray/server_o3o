@@ -8,6 +8,7 @@ var wechatComponentVerifyTicket = Waterline.Collection.extend({
     identity: 'wechatComponentVerifyTicket',
     tableName: "wechat_component_verify_ticket",
     connection: ['ztg-mysql'],
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,

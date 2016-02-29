@@ -10,6 +10,7 @@ var promotInfo = Waterline.Collection.extend({
     identity: 'promotInfo',
     tableName: "promot_info",
     connection: ['ztg-mysql'],
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,
