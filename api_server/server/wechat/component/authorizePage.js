@@ -23,7 +23,8 @@ exports.authorizePage = function (req, res, next) {
     var redirectURI = protocol + websiteUrl + "/wechat/component/authorize/callback";
 
     component.getAuthorizeURL(redirectURI, function (err, authorizeURL) {
-        if (err) return next(new Error({code: "10201", msgInfo: "微信开放平台获取授权网页失败!", error: err}));
+
+        if (err) return res.send(new app.sendJsonObj(10201, "微信开放平台获取授权网页失败 !", err).send(null, __dirname, 1, "serverPage"));
 
         console.log(authorizeURL);
 
@@ -41,17 +42,13 @@ exports.authorizePageBack = function (req, res, next) {
 
     component.getAccessToken(function (err, component_access_token) {
 
-        if (err) return next(new Error({code: "10202", msgInfo: "获取第三方平台access_token时发生了错误!", error: err}));
+        if (err) return res.send(new app.sendJsonObj(10202, "获取第三方平台access_token时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
         component.queryAuth(authorization_code, function (err, authorization_info) {
 
             wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
 
-                if (err) return next(new Error({
-                    code: "10203",
-                    msgInfo: "保存第三方平台authorization_info时发生了错误!",
-                    error: err
-                }));
+                if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                 wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {
                     authorizer_refresh_token: authorization_info.authorizer_refresh_token,
@@ -59,11 +56,7 @@ exports.authorizePageBack = function (req, res, next) {
                     expires_in: authorization_info.expires_in,
                 }, function (err, data) {
 
-                    if (err) return next(new Error({
-                        code: "10204",
-                        msgInfo: "保存第三方平台saveAuthorizerAccessToken时发生了错误!",
-                        error: err
-                    }));
+                    if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                     var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
                     sendObj.strInfo = "授权成功!";

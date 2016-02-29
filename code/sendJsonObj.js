@@ -17,7 +17,7 @@ var sendJsonObj = function (code, errorTitle, errorDetail, jsonObj, jsonStr) {
 }
 
 
-sendJsonObj.prototype.send = function (needSendMsg, level) {
+sendJsonObj.prototype.send = function (needSendMsg, dirName, level, type) { //"serverPage"
 
     if (this.getCode() != 0) console.error(this.sendJsonObj);//TODO::统一错误处理
 
