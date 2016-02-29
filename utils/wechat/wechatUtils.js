@@ -6,7 +6,7 @@
 /*!
  * 从微信的提交中提取XML文件
  */
-getMessage = function (stream, callback) {
+var getMessage = function (stream, callback) {
     load(stream, function (err, buf) {
         if (err) {
             return callback(err);
