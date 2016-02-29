@@ -60,8 +60,8 @@ exports.initPageInfo = function (data, callback) {
         json: true
     }, function (err, response, body) {
         if (err) return callback(err);
-        if (body.code != 0) return callback(body.error);
-        if (body.code == 0) return callback(null, body)
+        if (body.code != 0) return callback(body.error.title);
+        if (body.code == 0) return callback(null, body);
     });
 
 

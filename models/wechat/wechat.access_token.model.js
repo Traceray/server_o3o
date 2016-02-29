@@ -9,7 +9,6 @@ var wechatAccessToken = Waterline.Collection.extend({
     identity: 'wechatAccessToken',
     tableName: "wechat_access_token",
     connection: ['ztg-mysql'],
-    migrate: 'alter',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,
