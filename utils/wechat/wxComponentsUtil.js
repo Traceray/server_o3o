@@ -94,13 +94,17 @@ exports.saveComponentAccessToken = function (token, callback) {
     console.log("@@@ ------ get component_access_token ------------ @@@" + token.toString());
     console.dir(token);
 
+    var component_access_token = token.accessToken;
+
+    var expires_in = token.expireTime;
+
     /**
      * 保存数据
      */
     app.models.wechatcomponentaccesstoken.create({
         component_appid: component_appid,
-        component_access_token: token.component_access_token,
-        expires_in: token.expires_in
+        component_access_token: component_access_token,
+        expires_in: expires_in
     }, function (err, model) {
         if (err) return callback(err);
         callback(null, model)
