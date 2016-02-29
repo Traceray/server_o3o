@@ -91,7 +91,8 @@ exports.getComponentAccessToken = function (callback) {
 exports.saveComponentAccessToken = function (token, callback) {
 
 
-    console.log("@@@ ------ get component_access_token ------------ @@@" + token);
+    console.log("@@@ ------ get component_access_token ------------ @@@" + token.toString());
+    console.dir(token);
 
     /**
      * 保存数据
