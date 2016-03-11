@@ -1,11 +1,10 @@
 /**
  * Created by Administrator on 2016/3/11 0011.
  */
+var Component = require("wechat-component");
 
-
-
-var wxUtil = require("../../../utils/wechat/wxUtil.js");
-var wxComponentsUtil = require("../../../utils/wechat/wxComponentsUtil.js");
+var wxUtil = require("../../../../utils/wechat/wxUtil.js");
+var wxComponentsUtil = require("../../../../utils/wechat/wxComponentsUtil.js");
 
 var componentConfig = require("config").get("wechat.componentConfig");
 var component_appid = componentConfig.component_appid;//开放平台appid
