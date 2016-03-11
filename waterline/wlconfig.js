@@ -100,14 +100,14 @@ var wlconfig = {
             collation: 'utf8_swedish_ci'
         },
 
-        "mongo": {
-            adapter: 'mongo',
-            host: mongoDBConfig.host, // defaults to `localhost` if omitted
-            port: mongoDBConfig.port, // defaults to 27017 if omitted
-            user: mongoDBConfig.user, // or omit if not relevant
-            password: mongoDBConfig.password, // or omit if not relevant
-            database: mongoDBConfig.database // or omit if not relevant
-        },
+        //"mongo": {
+        //    adapter: 'mongo',
+        //    host: mongoDBConfig.host, // defaults to `localhost` if omitted
+        //    port: mongoDBConfig.port, // defaults to 27017 if omitted
+        //    user: mongoDBConfig.user, // or omit if not relevant
+        //    password: mongoDBConfig.password, // or omit if not relevant
+        //    database: mongoDBConfig.database // or omit if not relevant
+        //},
 
         "redis": {
             adapter: 'redis',

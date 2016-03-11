@@ -13,6 +13,7 @@ var httpHelper = require('../../../lib/httpHelper.js');
 
 var request = require('request');
 
+var wxComponentsUtil = require("../../../utils/wechat/wxComponentsUtil.js");
 
 exports.test1 = function (req, res, next) {
     console.log(" ---- test1 ");
@@ -20,7 +21,14 @@ exports.test1 = function (req, res, next) {
     var type = req.params.type;
     var promotid = req.params.promotid;
 
-    res.send("code--" + req.query.code + "-state-" + req.query.state + "-");
+    wxComponentsUtil.getComponentVerifyTicket(function(err,data){
+
+        console.error(err);
+        console.log(data);
+        res.send(data);
+    });
+
+    //res.send("code--" + req.query.code + "-state-" + req.query.state + "-");
 
     //res.send("test1" + name + "-" + type + "-" + promotid);
     //var err = new Error('无法找到。');

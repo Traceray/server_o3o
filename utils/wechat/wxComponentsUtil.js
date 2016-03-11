@@ -29,10 +29,15 @@ exports.getComponentVerifyTicket = function (callback) {
      * 获取数据
      */
     app.models.wechatcomponentverifyticket.findOne({
-        component_appid: component_appid
+        where: {component_appid: component_appid},
+        sort: 'ticketid DESC'
     }).exec(function (err, docs) {
         if (err) return callback(err);
         if (!docs) return callback(null, null);
+
+        console.log("--------wechatcomponentverifyticket--------");
+        console.log(docs);
+
         callback(null, docs.component_verify_ticket)
     });
 
