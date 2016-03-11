@@ -30,6 +30,8 @@ exports.comptAccept = require("./component/accept.js");//接受微信开放平�
 
 exports.comptAuthorizePage = require("./component/authorizePage.js");
 
+exports.receiveMsgEvent = require("./component/receiveMessagesEvents.js");
+
 
 
 

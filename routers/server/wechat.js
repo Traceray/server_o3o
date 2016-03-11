@@ -36,5 +36,7 @@ router.post('/component/accept', wechatAPI.comptAccept.postAccept);
 router.get('/component/authorize', wechatAPI.comptAuthorizePage.authorizePage);
 router.post('/component/authorize/callback', wechatAPI.comptAuthorizePage.authorizePageBack);
 
+router.post('/component/receive/:appid', wechatAPI.receiveMsgEvent.receive);//公众号消息与事件接收URL
+
 
 module.exports = router;

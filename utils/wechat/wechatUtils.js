@@ -2,9 +2,7 @@
  * Created by o3oNet on 16-2-26.
  */
 
-
 var xml2js = require('xml2js');
-
 
 /*!
  * 从微信的提交中提取XML文件
@@ -77,3 +75,14 @@ var formatMessage = function (result) {
 };
 
 exports.formatMessage = formatMessage;
+
+
+/**
+ * 开放平台打包数据
+ */
+
+
+
+
+
+
