@@ -2,6 +2,12 @@
  * Created by o3oNet on 16-2-26.
  */
 
+
+/**
+ * 微信开放平台 授权确认
+ * @type {*|exports|module.exports}
+ */
+
 var Component = require("wechat-component");
 
 var wxComponentsUtil = require("../../../../utils/wechat/wxComponentsUtil.js");

@@ -34,7 +34,7 @@ router.get('/oauth/authorizeURL/:promotid', wechatAPI.oauthAuthorizeURL.promotOa
 router.get('/component/accept', wechatAPI.comptAccept.getAccept);//开放平台
 router.post('/component/accept', wechatAPI.comptAccept.postAccept);
 router.get('/component/authorize', wechatAPI.comptAuthorizePage.authorizePage);
-router.get('/component/authorize/callback', wechatAPI.comptAuthorizePage.authorizePageBack);
+router.post('/component/authorize/callback', wechatAPI.comptAuthorizePage.authorizePageBack);
 
 
 module.exports = router;

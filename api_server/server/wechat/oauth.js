@@ -40,7 +40,7 @@ exports.oauth = function (req, res, next) {
     var redirectUrl = "promotUrl";
     var appid = "wxbc9b7da0b82ac2b8";
     var secret = "";
-    var authorizeType = "";
+    var authorizeType = "wechat_component";
 
     //检验授权方式
     if (authorizeType == "wechat_component") {
