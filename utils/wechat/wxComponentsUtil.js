@@ -100,12 +100,11 @@ exports.getComponentAccessToken = function (callback) {
 exports.saveComponentAccessToken = function (token, callback) {
 
 
-    console.log("@@@ ------ get component_access_token ------------ @@@" + token.toString());
+    console.log("@@@ ------ get component_access_token ------------ @@@");
     console.dir(token);
 
     var component_access_token = token.accessToken;
-
-    var expires_in = token.expireTime;
+    var expireTime = token.expireTime;
 
     /**
      * 保存数据
@@ -113,7 +112,7 @@ exports.saveComponentAccessToken = function (token, callback) {
     app.models.wechatcomponentaccesstoken.create({
         component_appid: component_appid,
         component_access_token: component_access_token,
-        expires_in: expires_in
+        expireTime: expireTime
     }, function (err, model) {
         if (err) return callback(err);
         callback(null, model)
@@ -198,15 +197,19 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
         console.log("@@@ ------ save authorizerAccessToken ------------ @@@");
         console.dir(token);
 
+        var authorizer_access_token = token.accessToken;
+        var authorizer_refresh_token = token.refreshToken;
+        var expireTime = token.expireTime;
+
         /**
          * 保存数据
          */
         app.models.wechatcomponentauthorizeraccesstoken.create({
             component_appid: component_appid,
             authorizer_appid: authorizer_appid,
-            authorizer_refresh_token: token.refreshToken,
-            authorizer_access_token: token.accessToken,
-            expireTime: token.expireTime
+            authorizer_access_token: authorizer_access_token,
+            authorizer_refresh_token: authorizer_refresh_token,
+            expireTime: expireTime
         }, function (err, model) {
             if (err) return callback(err);
             callback(null, model)
