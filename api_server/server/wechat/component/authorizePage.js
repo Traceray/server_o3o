@@ -48,33 +48,42 @@ exports.authorizePageBack = function (req, res, next) {
 
     console.log(" @@@ -- get component authorization_code -- @@@ - " + authorization_code);
 
-    component.getAccessToken(function (err, component_access_token) {
 
-        if (err) return res.send(new app.sendJsonObj(10202, "获取第三方平台access_token时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+    component.queryAuth(authorization_code, function (err, authorizationInfo) {//获取授权码信息
 
-        component.queryAuth(authorization_code, function (err, authorization_info) {
+        var authorization_info = authorizationInfo.authorization_info;
 
-            wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
+        console.log("  @@@ -- get authorizationInfo back -- @@@ ");
+        console.log(authorization_info);
 
-                if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+        //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
-                wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {
-                    authorizer_refresh_token: authorization_info.authorizer_refresh_token,
-                    authorizer_access_token: authorization_info.authorizer_access_token,
-                    expires_in: authorization_info.expires_in,
-                }, function (err, data) {
+        wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
+            authorizer_refresh_token: authorization_info.authorizer_refresh_token,
+            authorizer_access_token: authorization_info.authorizer_access_token,
+            expires_in: authorization_info.expires_in,
+        }, function (err, data) {
 
-                    if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+            if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+
+            component.getAuthorizerInfo(authorization_info.authorizer_appid, function (err, authorizerInfo) {
+
+                console.log("  @@@ -- get authorizerInfo back -- @@@ ");
+                console.log(authorizerInfo);
+
+                wxComponentsUtil.svaeComponentAuthorizer(authorizerInfo, function (err, data) {
+
+                    if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                     var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
                     sendObj.strInfo = "授权成功!";
-                    sendObj.jsonData.authorization_info = authorization_info;
+                    sendObj.jsonData.authorizerInfo = authorizerInfo;
                     res.send(sendObj);
 
                 });
 
-
             });
+
 
         });
 
