@@ -176,6 +176,7 @@ exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TOD
             console.log(docs);
 
             callback(null, {
+                refreshToken: docs.authorizer_refresh_token,//解决 component插件问题
                 authorizer_refresh_token: docs.authorizer_refresh_token,
                 authorizer_access_token: docs.authorizer_access_token,
                 expires_in: docs.expires_in
