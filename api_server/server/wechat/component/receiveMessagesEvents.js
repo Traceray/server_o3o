@@ -23,6 +23,7 @@ exports.receive = wechat({
 }, function (req, res, next) {
 
     var appid = req.params.appid;
+
     console.log(" @@@ -- 获取到了 -" + appid + "- 微信推送消息 -- @@@ ");
 
     // 微信输入信息都在req.weixin上
@@ -63,7 +64,7 @@ exports.receive = wechat({
                 });
 
                 //QUERY_AUTH_CODE:
-                var oauthApi = component.getOAuth(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+                var oauthApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
                 oauthApi.sendText(message.FromUserName, message.Content.substr(16) + "_from_api", function (err, data) {
                     if (err) return console.error(err);
                     if (data) console.log(data)
@@ -87,58 +88,3 @@ exports.receive = wechat({
 
 
 });
-
-
-//exports.receive = function (req, res, next) {
-//
-//    var appid = req.params.appid;
-//
-//    console.log(" @@@ -- 获取到了 -" + appid + "- 微信推送消息 -- @@@ ");
-//
-//    wxComponentsUtil.getWxJsonFromXmlData(req, function (err, jsonData) {
-//
-//        console.dir(jsonData);
-//
-//        //TODO::根据不同的公众号做出不同的反应
-//
-//        if (appid == "wx570bc396a51b8ff8") {//微信开发平台发布全网测试验证
-//
-//            if (jsonData.MsgType == "event") {//事件推送  根据不同的事件做不同的处理
-//
-//                var content = event + "from_callback";
-//
-//
-//
-//            }
-//
-//        }
-//
-//
-//        var event = jsonData.Event;
-//
-//        var content = event + "from_callback";
-//
-//        /**
-//         * 根据条件对返回的XML数据加密
-//         * @param xml
-//         */
-//        function encryptXml(xml) {
-//            var component_appid = pGV.wxComponentConfig.component_appid;
-//            var encodingAESKey = pGV.wxComponentConfig.encodingAESKey;
-//            var token = pGV.wxComponentConfig.token;
-//            var cryptor = new WXBizMsgCrypt(token, encodingAESKey, component_appid);
-//            var wrap = {};
-//            wrap.encrypt = cryptor.encrypt(xml);
-//            wrap.nonce = parseInt((Math.random() * 100000000000), 10);
-//            wrap.timestamp = new Date().getTime();
-//            wrap.signature = cryptor.getSignature(wrap.timestamp, wrap.nonce, wrap.encrypt);
-//            return encryptWrap(wrap);
-//        }
-//
-//        var message = jsonData;
-//
-//        res.send(encryptXml(reply(content, message.ToUserName, message.FromUserName, message)));
-//
-//
-//    });
-//}
