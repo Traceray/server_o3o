@@ -71,36 +71,35 @@ exports.receive = wechat({
                 /**
                  * 保存测试
                  */
-                component.getAccessToken(function (err, component_access_token) {
 
-                    if (err) return res.send(new app.sendJsonObj(10202, "获取第三方平台access_token时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+                component.queryAuth(authorization_code, function (err, authorization_info) {
 
-                    component.queryAuth(authorization_code, function (err, authorization_info) {
+                    console.log(authorization_info);
 
-                        wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
+                    wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
 
-                            if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+                        //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
-                            wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {
-                                authorizer_refresh_token: authorization_info.authorizer_refresh_token,
-                                authorizer_access_token: authorization_info.authorizer_access_token,
-                                expires_in: authorization_info.expires_in,
-                            }, function (err, data) {
+                        console.log(authorization_info);
 
-                                if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+                        wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {
+                            authorizer_refresh_token: authorization_info.authorizer_refresh_token,
+                            authorizer_access_token: authorization_info.authorizer_access_token,
+                            expires_in: authorization_info.expires_in,
+                        }, function (err, data) {
 
-                                //QUERY_AUTH_CODE:
-                                var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
-                                wechatApi.sendText(message.FromUserName, authorization_code + "_from_api", function (err, data) {
-                                    if (err) return console.error(err);
-                                    if (data) console.log(data)
-                                });
+                            if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
-
+                            //QUERY_AUTH_CODE:
+                            var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+                            wechatApi.sendText(message.FromUserName, authorization_code + "_from_api", function (err, data) {
+                                if (err) return console.error(err);
+                                if (data) console.log(data)
                             });
 
 
                         });
+
 
                     });
 
