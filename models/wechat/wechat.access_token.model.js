@@ -33,8 +33,8 @@ var wechatAccessToken = Waterline.Collection.extend({
             type: 'string',
             required: false
         },
-        expires_in: {//有效期
-            type: 'integer',
+        expiresTime: {//有效期
+            type: 'time',
             required: true
         }
     },
