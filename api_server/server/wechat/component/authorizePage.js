@@ -46,6 +46,48 @@ exports.authorizePageBack = function (req, res, next) {
 
     var authorization_code = req.query.auth_code;
 
+    console.log(" @@@ -- get component authorization_code -- @@@ - " + authorization_code);
+
+    component.getAccessToken(function (err, component_access_token) {
+
+        if (err) return res.send(new app.sendJsonObj(10202, "获取第三方平台access_token时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+
+        component.queryAuth(authorization_code, function (err, authorization_info) {
+
+            wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
+
+                if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+
+                wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {
+                    authorizer_refresh_token: authorization_info.authorizer_refresh_token,
+                    authorizer_access_token: authorization_info.authorizer_access_token,
+                    expires_in: authorization_info.expires_in,
+                }, function (err, data) {
+
+                    if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+
+                    var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
+                    sendObj.strInfo = "授权成功!";
+                    sendObj.jsonData.authorization_info = authorization_info;
+                    res.send(sendObj);
+
+                });
+
+
+            });
+
+        });
+
+    });
+
+}
+
+exports.authorizePageBack1 = function (req, res, next) {
+
+    var authorization_code = req.query.auth_code;
+
+    console.log(" @@@ -- get component authorization_code get -- @@@ - " + authorization_code);
+
     component.getAccessToken(function (err, component_access_token) {
 
         if (err) return res.send(new app.sendJsonObj(10202, "获取第三方平台access_token时发生了错误!", err).send(null, __dirname, 1, "serverPage"));

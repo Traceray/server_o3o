@@ -33,8 +33,10 @@ router.get('/oauth/authorizeURL/:promotid', wechatAPI.oauthAuthorizeURL.promotOa
  */
 router.get('/component/accept', wechatAPI.comptAccept.getAccept);//开放平台
 router.post('/component/accept', wechatAPI.comptAccept.postAccept);
+
 router.get('/component/authorize', wechatAPI.comptAuthorizePage.authorizePage);
 router.post('/component/authorize/callback', wechatAPI.comptAuthorizePage.authorizePageBack);
+router.get('/component/authorize/callback', wechatAPI.comptAuthorizePage.authorizePageBack1);
 
 router.post('/component/receive/:appid', wechatAPI.receiveMsgEvent.receive);//公众号消息与事件接收URL
 

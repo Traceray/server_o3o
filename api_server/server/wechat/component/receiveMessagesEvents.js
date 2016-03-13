@@ -64,8 +64,8 @@ exports.receive = wechat({
                 });
 
                 //QUERY_AUTH_CODE:
-                var oauthApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
-                oauthApi.sendText(message.FromUserName, message.Content.substr(16) + "_from_api", function (err, data) {
+                var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+                wechatApi.sendText(message.FromUserName, message.Content.substr(16) + "_from_api", function (err, data) {
                     if (err) return console.error(err);
                     if (data) console.log(data)
                 });

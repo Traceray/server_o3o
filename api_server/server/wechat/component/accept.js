@@ -83,7 +83,7 @@ exports.postAccept = function (req, res, next) {
 
             } else if (InfoType == "authorized") {
 
-                console.log(" @@@ --- 微信开放平台授权成功 --- @@@" + req.weixin.AuthorizerAppid);
+                console.log(" @@@ --- 微信开放平台授权成功 --- @@@ --" + req.weixin.AuthorizerAppid);
 
                 res.send("success");
 

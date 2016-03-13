@@ -163,7 +163,10 @@ exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TOD
             authorizer_appid: authorizer_appid
         }).exec(function (err, docs) {
             if (err) return callback(err);
-            if (!docs) return callback(null, null);
+            if (!docs) return callback(null, "@@@ ------ get AuthorizerAccessToken empty------------ @@@");
+
+            console.log(docs);
+
             callback(null, {
                 authorizer_refresh_token: docs.authorizer_refresh_token,
                 authorizer_access_token: docs.authorizer_access_token,
