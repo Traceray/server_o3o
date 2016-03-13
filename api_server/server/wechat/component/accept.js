@@ -36,6 +36,7 @@ exports.getAccept = function (req, res, next) {
  */
 exports.postAccept = function (req, res, next) {
 
+    //TODO::记录事件日志
 
     /**
      * 从req中获取xmldata
@@ -79,7 +80,6 @@ exports.postAccept = function (req, res, next) {
 
                 });
 
-
             } else if (InfoType == "unauthorized") {
 
                 console.log(" @@@ --- 微信开放平台取消授权 --- @@@" + req.weixin.AuthorizerAppid);
@@ -87,13 +87,6 @@ exports.postAccept = function (req, res, next) {
                 res.send("success");
 
             } else if (InfoType == "authorized") {
-
-                var AuthorizerAppid = message.AuthorizerAppid;
-                var AuthorizationCode = message.AuthorizationCode;
-
-
-
-
 
                 console.log(" @@@ --- 微信开放平台授权成功 --- @@@ --" + req.weixin.AuthorizerAppid);
                 console.dir(message);
