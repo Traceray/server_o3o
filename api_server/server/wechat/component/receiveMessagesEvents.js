@@ -34,7 +34,7 @@ exports.receive = wechat({
 
         if (message.MsgType == "event") {//事件推送  根据不同的事件做不同的处理
 
-            var content = event + "from_callback";
+            var content = message.Event + "from_callback";
             res.reply({
                 content: content,
                 type: 'text'
@@ -47,6 +47,8 @@ exports.receive = wechat({
             console.log(message.Content);
 
             if (message.Content == "TESTCOMPONENT_MSG_TYPE_TEXT") {//
+
+                console.log(" @@@ -- SEND TESTCOMPONENT_MSG_TYPE_TEXT SCUESS -- @@@");
 
                 res.reply({
                     content: "TESTCOMPONENT_MSG_TYPE_TEXT_callback",
@@ -62,7 +64,7 @@ exports.receive = wechat({
 
                 //QUERY_AUTH_CODE:
                 var oauthApi = component.getOAuth(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
-                oauthApi.sendText(message.FromUserName, message.Content.subStr(16) + "_from_api", function (err, data) {
+                oauthApi.sendText(message.FromUserName, message.Content.substr(16) + "_from_api", function (err, data) {
                     if (err) return console.error(err);
                     if (data) console.log(data)
                 });
