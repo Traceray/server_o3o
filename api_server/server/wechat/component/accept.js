@@ -64,6 +64,8 @@ exports.postAccept = function (req, res, next) {
 
             console.log(req.weixin);
 
+            var message = req.weixin;
+
             var InfoType = req.weixin.InfoType;
 
             if (InfoType == "component_verify_ticket") {
@@ -86,7 +88,15 @@ exports.postAccept = function (req, res, next) {
 
             } else if (InfoType == "authorized") {
 
+                var AuthorizerAppid = message.AuthorizerAppid;
+                var AuthorizationCode = message.AuthorizationCode;
+
+
+
+
+
                 console.log(" @@@ --- 微信开放平台授权成功 --- @@@ --" + req.weixin.AuthorizerAppid);
+                console.dir(message);
 
                 res.send("success");
 

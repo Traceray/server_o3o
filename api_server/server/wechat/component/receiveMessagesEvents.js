@@ -74,7 +74,7 @@ exports.receive = wechat({
 
                 component.queryAuth(authorization_code, function (err, authorization_info) {
 
-                    console.log(authorization_info);
+                    authorization_info = authorization_info.authorization_info;
 
                     wxComponentsUtil.svaeComponentAuthorizer(authorization_info, function (err, data) {
 
