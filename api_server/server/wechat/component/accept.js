@@ -60,6 +60,9 @@ exports.postAccept = function (req, res, next) {
 
             req.weixin = wechatUtils.formatMessage(result.xml);
 
+            console.log(" @@@ -- get event -- @@@");
+
+            console.log(req.weixin);
 
             var InfoType = req.weixin.InfoType;
 
