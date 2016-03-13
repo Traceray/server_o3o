@@ -195,7 +195,8 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
 
     return function (token, callback) {
 
-        console.log("@@@ ------ save authorizerAccessToken ------------ @@@" + token.toString());
+        console.log("@@@ ------ save authorizerAccessToken ------------ @@@");
+        console.dir(token);
 
         /**
          * 保存数据
@@ -203,9 +204,9 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
         app.models.wechatcomponentauthorizeraccesstoken.create({
             component_appid: component_appid,
             authorizer_appid: authorizer_appid,
-            authorizer_refresh_token: token.authorizer_refresh_token,
-            authorizer_access_token: token.authorizer_access_token,
-            expires_in: token.expires_in
+            authorizer_refresh_token: token.refreshToken,
+            authorizer_access_token: token.accessToken,
+            expireTime: token.expireTime
         }, function (err, model) {
             if (err) return callback(err);
             callback(null, model)
