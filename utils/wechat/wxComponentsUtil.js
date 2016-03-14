@@ -176,10 +176,11 @@ exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TOD
             console.log(docs);
 
             callback(null, {
+                accessToken: docs.authorizer_access_token,
                 refreshToken: docs.authorizer_refresh_token,//解决 component插件问题
                 authorizer_refresh_token: docs.authorizer_refresh_token,
                 authorizer_access_token: docs.authorizer_access_token,
-                expires_in: docs.expires_in
+                expireTime: docs.expireTime
             })
         });
     }
@@ -198,9 +199,9 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
         console.log("@@@ ------ save authorizerAccessToken ------------ @@@");
         console.dir(token);
 
-        //var authorizer_access_token = token.accessToken;
-        // var authorizer_refresh_token = token.refreshToken;
-        //var expireTime = token.expireTime;
+        var authorizer_access_token = token.accessToken;
+        var authorizer_refresh_token = token.refreshToken;
+        var expireTime = token.expireTime;
 
         /**
          * 保存数据
@@ -208,9 +209,9 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
         app.models.wechatcomponentauthorizeraccesstoken.create({
             component_appid: component_appid,
             authorizer_appid: authorizer_appid,
-            authorizer_access_token: token.authorizer_access_token,
-            authorizer_refresh_token: token.authorizer_refresh_token,
-            expires_in: token.expires_in
+            authorizer_access_token: authorizer_access_token,
+            authorizer_refresh_token: authorizer_refresh_token,
+            expireTime: expireTime
         }, function (err, model) {
             if (err) return callback(err);
             callback(null, model)
