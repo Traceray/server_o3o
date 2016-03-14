@@ -51,7 +51,8 @@ exports.getComponentVerifyTicket = function (callback) {
  */
 exports.svaeComponentVerifyTicket = function (component_verify_ticket, callback) {
 
-    console.log("@@@ ------ get component_verify_ticket ------------ @@@" + component_verify_ticket);
+    console.log("@@@ ------ save component_verify_ticket ------------ @@@");
+    console.dir(component_verify_ticket);
 
     /**
      * 保存数据
