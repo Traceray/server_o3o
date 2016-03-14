@@ -210,7 +210,7 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, callback) {
             authorizer_appid: authorizer_appid,
             authorizer_access_token: token.authorizer_access_token,
             authorizer_refresh_token: token.authorizer_refresh_token,
-            expires_in: expires_in
+            expires_in: token.expires_in
         }, function (err, model) {
             if (err) return callback(err);
             callback(null, model)
