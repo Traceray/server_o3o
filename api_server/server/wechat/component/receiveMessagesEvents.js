@@ -81,9 +81,9 @@ exports.receive = wechat({
                     //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                     wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
-                        authorizer_refresh_token: authorization_info.authorizer_refresh_token,
-                        authorizer_access_token: authorization_info.authorizer_access_token,
-                        expires_in: authorization_info.expires_in,
+                        accessToken: authorization_info.authorizer_refresh_token,
+                        refreshToken: authorization_info.authorizer_access_token,
+                        expireTime: (new Date().getTime()) + (authorization_info.expires_in - 10) * 1000
                     }, function (err, data) {
 
                         if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
