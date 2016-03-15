@@ -49,7 +49,6 @@ exports.authorizePageBack = function (req, res, next) {
 
     console.log(" @@@ -- get component authorization_code -- @@@ - " + authorization_code);
 
-
     component.queryAuth(authorization_code, function (err, authorizationInfo) {//获取授权码信息
 
         var authorization_info = authorizationInfo.authorization_info;
@@ -57,12 +56,12 @@ exports.authorizePageBack = function (req, res, next) {
         console.log("  @@@ -- get authorizationInfo back -- @@@ ");
         console.log(authorization_info);
 
-        //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+        if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
         wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
-            authorizer_refresh_token: authorization_info.authorizer_refresh_token,
-            authorizer_access_token: authorization_info.authorizer_access_token,
-            expires_in: authorization_info.expires_in,
+            accessToken: authorization_info.authorizer_access_token,
+            refreshToken: authorization_info.authorizer_refresh_token,
+            expireTime: (new Date().getTime()) + (authorization_info.expires_in - 10) * 1000
         }, function (err, data) {
 
             if (err) return res.send(new app.sendJsonObj(10204, "保存第三方平台saveAuthorizerAccessToken时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
