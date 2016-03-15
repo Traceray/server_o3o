@@ -91,6 +91,12 @@ exports.postAccept = function (req, res, next) {
                 console.log(" @@@ --- 微信开放平台授权成功 --- @@@ --" + req.weixin.AuthorizerAppid);
                 console.dir(message);
 
+                /***
+                 * 保存数据
+                 */
+
+
+
                 res.send("success");
 
             } else if (InfoType == "updateauthorized") {

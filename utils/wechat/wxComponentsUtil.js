@@ -158,6 +158,8 @@ exports.svaeComponentAuthorizer = function (authorizerInfo, callback) {
  */
 exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TODO::有没有更好的方法解决 //NOTE:
 
+    console.log(" @@@ -- start getAuthorizerAccessToken -- @@@ -" + authorizer_appid);
+
     return function (callback) {
         /**
          * 获取数据
@@ -170,6 +172,10 @@ exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TOD
                 sort: "authorizeraccesstokenid DESC"
             }
         ).exec(function (err, docs) {
+
+            console.log(err)
+            console.log(docs)
+
             if (err) return callback(err);
             if (!docs) return callback(null, "@@@ ------ get AuthorizerAccessToken empty------------ @@@");
 

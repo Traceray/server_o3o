@@ -81,8 +81,8 @@ exports.receive = wechat({
                     //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                     wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
-                        accessToken: authorization_info.authorizer_refresh_token,
-                        refreshToken: authorization_info.authorizer_access_token,
+                        accessToken: authorization_info.authorizer_access_token,
+                        refreshToken: authorization_info.authorizer_refresh_token,
                         expireTime: (new Date().getTime()) + (authorization_info.expires_in - 10) * 1000
                     }, function (err, data) {
 
@@ -148,15 +148,15 @@ function mapToken(accessToken, expiresIn, refreshToken) {
 
 exports.test1 = function (req, res, next) {
 
-    var appid = "wx570bc396a51b8ff8";
+    var appid = "wxbc9b7da0b82ac2b8";
 
     console.log(" --  测试开始  -- ");
 
-    wxComponentsUtil.getAuthorizerAccessToken(appid, function (err, token) {
+    wxComponentsUtil.getAuthorizerAccessToken(appid)(function (err, token) {
 
         if (err) console.log(" -- 获取到了错误数据 -- ");
         if (err)  console.error(err);
-        console.log(data);
+        console.log(token);
 
         component.getAuthorizerToken(appid, token.refreshToken, function (err, data) {
             if (err) {

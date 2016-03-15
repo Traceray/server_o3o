@@ -20,13 +20,14 @@ var component_appsecret = componentConfig.component_appsecret;
 
 var websiteUrl = baseInfoConfig.websiteUrl;
 var protocol = baseInfoConfig.protocol;
+var apiBaseUrl = baseInfoConfig.apiBaseUrl;
 
 var component = new Component(component_appid, component_appsecret, wxComponentsUtil.getComponentVerifyTicket, wxComponentsUtil.getComponentAccessToken, wxComponentsUtil.saveComponentAccessToken);
 
 
 exports.authorizePage = function (req, res, next) {
 
-    var redirectURI = protocol + websiteUrl + "/wechat/component/authorize/callback";
+    var redirectURI = protocol + websiteUrl + apiBaseUrl + "/wechat/component/authorize/callback";
 
     component.getAuthorizeURL(redirectURI, function (err, authorizeURL) {
 
