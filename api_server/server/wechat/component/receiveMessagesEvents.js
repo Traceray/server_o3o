@@ -132,3 +132,63 @@ exports.receive = wechat({
 
 
 });
+
+function mapToken(accessToken, expiresIn, refreshToken) {
+    // 过期时间，因网络延迟等，将实际过期时间提前10秒，以防止临界点
+    var expireTime = (new Date().getTime()) + (expiresIn - 10) * 1000;
+    var token = API.AccessToken(accessToken, expireTime);
+    if (refreshToken) {
+        token.refreshToken = refreshToken;
+    }
+
+    console.log(" --  token  --");
+
+    return token;
+}
+
+exports.test1 = function (req, res, next) {
+
+    var appid = "wx570bc396a51b8ff8";
+
+    console.log(" --  测试开始  -- ");
+
+    wxComponentsUtil.getAuthorizerAccessToken(appid, function (err, token) {
+
+        if (err) console.log(" -- 获取到了错误数据 -- ");
+        if (err)  console.error(err);
+        console.log(data);
+
+        component.getAuthorizerToken(appid, token.refreshToken, function (err, data) {
+            if (err) {
+                console.error(err)
+                return res.send(err);
+            }
+
+            console.log("  component.getAuthorizerToken  ");
+            console.log(data)
+            console.log(" ------------")
+            var token = mapToken(data.authorizer_access_token, data.expires_in, data.authorizer_refresh_token);
+            console.log(token);
+
+            res.send(token)
+
+        });
+
+    });
+
+
+}
+
+exports.test2 = function (req, res, next) {
+
+    console.log(" -------------test2------------");
+
+    var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+
+    wechatApi.sendText("test", "authorization_code" + "_from_api", function (err, data) {
+        if (err) return console.error(err);
+        if (data) console.log(data)
+        if (err) res.send(err)
+        if (data) res.send(data);
+    });
+}

@@ -9,8 +9,11 @@ var router = express.Router();
 
 var serversAPI = require('../../api_server/server/servers');
 
+var test = require('../../api_server/server/wechat/component/receiveMessagesEvents');
 
 router.get('/test', serversAPI.showLogic.test1);
+router.get('/test1', test.test1);
+router.get('/test2', test.test2);
 
 router.get('/test/oauth/:name/:type/:promotid', serversAPI.showLogic.test1);
 router.get('/test/oauth2/:name/:type/:promotid', serversAPI.showLogic.test2);
