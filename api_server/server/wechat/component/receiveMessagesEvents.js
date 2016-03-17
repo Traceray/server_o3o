@@ -80,7 +80,7 @@ exports.receive = wechat({
 
                     //if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
-                    wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
+                    wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid,{//返回方法
                         accessToken: authorization_info.authorizer_access_token,
                         refreshToken: authorization_info.authorizer_refresh_token,
                         expireTime: (new Date().getTime()) + (authorization_info.expires_in - 10) * 1000
@@ -98,7 +98,7 @@ exports.receive = wechat({
                                 if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
                                 //QUERY_AUTH_CODE:
-                                var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+                                var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken, wxComponentsUtil.saveAuthorizerAccessToken);
                                 wechatApi.sendText(message.FromUserName, authorization_code + "_from_api", function (err, data) {
                                     if (err) return console.error(err);
                                     if (data) console.log(data)
@@ -183,7 +183,7 @@ exports.test2 = function (req, res, next) {
 
     console.log(" -------------test2------------");
 
-    var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken(appid), wxComponentsUtil.saveAuthorizerAccessToken(appid));
+    var wechatApi = component.getAPI(appid, wxComponentsUtil.getAuthorizerAccessToken, wxComponentsUtil.saveAuthorizerAccessToken);
 
     wechatApi.sendText("test", "authorization_code" + "_from_api", function (err, data) {
         if (err) return console.error(err);

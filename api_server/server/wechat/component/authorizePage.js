@@ -58,7 +58,7 @@ exports.authorizePageBack = function (req, res, next) {
 
         if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorization_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
 
-        wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid)({//返回方法
+        wxComponentsUtil.saveAuthorizerAccessToken(authorization_info.authorizer_appid, {//返回方法
             accessToken: authorization_info.authorizer_access_token,
             refreshToken: authorization_info.authorizer_refresh_token,
             expireTime: (new Date().getTime()) + (authorization_info.expires_in - 10) * 1000
@@ -70,17 +70,21 @@ exports.authorizePageBack = function (req, res, next) {
 
                 console.log("  @@@ -- get authorizerInfo back -- @@@ ");
                 console.log(authorizerInfo);
+                var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
+                sendObj.strInfo = "授权成功!";
+                sendObj.jsonData.authorizerInfo = authorizerInfo;
+                res.send(sendObj);
 
-                wxComponentsUtil.svaeComponentAuthorizer(authorizerInfo, function (err, data) {
-
-                    if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
-
-                    var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
-                    sendObj.strInfo = "授权成功!";
-                    sendObj.jsonData.authorizerInfo = authorizerInfo;
-                    res.send(sendObj);
-
-                });
+                //wxComponentsUtil.svaeComponentAuthorizer(authorizerInfo, function (err, data) {
+                //
+                //    if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+                //
+                //    var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
+                //    sendObj.strInfo = "授权成功!";
+                //    sendObj.jsonData.authorizerInfo = authorizerInfo;
+                //    res.send(sendObj);
+                //
+                //});
 
             });
 
