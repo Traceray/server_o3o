@@ -43,5 +43,7 @@ router.post('/component/receive/:appid', wechatAPI.receiveMsgEvent.receive);//å…
 
 router.get("/red/send/", wechatAPI.red.send)
 
+router.get("/wechat", wechatAPI.wechat.wechat)
+
 
 module.exports = router;

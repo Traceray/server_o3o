@@ -13,16 +13,17 @@ var encoding = require('encoding');
 
 var httpHelper = require('../../../../lib/httpHelper.js');
 
-var wechatConfig = require("../../config/wechatConfig.js");
-var appConfig = require("../../../config/appConfig.js");
+var wechatConfig = require("config").get("wechat.wxAppConfig");
+var tuling123Config = require("config").get("tuling123");
 
 var wxConfig = {
-    appid: wechatConfig.wxAppConfig.appid,
-    tocken: wechatConfig.wxAppConfig.tocken,
-    encodingAESKey: wechatConfig.wxAppConfig.encodingAESKey
+    appid: wechatConfig.appid,
+    tocken: wechatConfig.tocken,
+    encodingAESKey: wechatConfig.encodingAESKey
 }
 
 exports.wechat = wechat(wxConfig.tocken, function (req, res, next) {
+
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
 
@@ -46,7 +47,7 @@ exports.wechat = wechat(wxConfig.tocken, function (req, res, next) {
 
         console.log("接受文本消息" + message.Content);
 
-        var tulingUrl = 'http://www.tuling123.com/openapi/api?key=' + appConfig.tuling123.APIKey + '&info=' + encodeURIComponent(message.Content);
+        var tulingUrl = 'http://www.tuling123.com/openapi/api?key=' + tuling123Config.APIKey + '&info=' + encodeURIComponent(message.Content);
 
         console.log(tulingUrl);
 

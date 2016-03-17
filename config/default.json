@@ -74,10 +74,10 @@
   },
   "wechat": {
     "wxAppConfig": {
-      "appid": "wx62ac15943a6a9990",
-      "secret": "09ff027eb1f6034b66310ef8755bc529",
-      "token": "smksjxo3oNetWX",
-      "encodingAESKey": "VJwT3DI05bHuixzu5BYBd1H9eiTHXZsFUWLJ4OMQrGh"
+      "appid": "wxbc9b7da0b82ac2b8",
+      "secret": "b82d9c4fbfc91c9a571357ccaa93d497",
+      "token": "oz35J6UmJaE1zeEJ2UjAz5WKJqcd2Cc2",
+      "encodingAESKey": "f0lS06LhxEH9ex0bVX8OM80wWvfVv8bBpo0wh4Vm96s"
     },
     "wePayConfig": {
       "appid": "wx62ac15943a6a9990",

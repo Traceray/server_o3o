@@ -34,6 +34,8 @@ exports.receiveMsgEvent = require("./component/receiveMessagesEvents.js");
 
 exports.red = require("./wechat/redPackets.js");
 
+exports.wechat = require("./wechat/wechat.js");
+
 
 
 
