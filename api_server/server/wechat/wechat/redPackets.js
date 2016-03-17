@@ -30,9 +30,9 @@ var weixin = require("./weixin.js")
 exports.send = function (req, res, next) {
 
     var scope = "snsapi_userinfo";
-    var redirectUrl = "promotUrl";
+    //var redirectUrl = "promotUrl";
     var appid = "wxbc9b7da0b82ac2b8";
-    var secret = "";
+    var secret = "b82d9c4fbfc91c9a571357ccaa93d497";
     var authorizeType = "wechat_urlbind";
 
     console.log(" @@@ -- req.query.code -- @@@ - " + req.query.code);
@@ -50,7 +50,7 @@ exports.send = function (req, res, next) {
 
         var redirectURI = protocol + websiteUrl + "/wechat/red/send";
 
-        return res.redirect(oauthApi.getAuthorizeURL(redirectURI, "", "snsapi_userinfo"));
+        return res.redirect(oauthApi.getAuthorizeURL(redirectURI, "state", "snsapi_userinfo"));
 
     } else {
 
