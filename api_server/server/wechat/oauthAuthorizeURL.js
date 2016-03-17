@@ -66,7 +66,7 @@ exports.promotOauthAuthorizeURL = function (req, res, next) {
 
     var redirectURI = protocol + websiteUrl + "/wechat/oauth/" + promotid;
 
-    var authorizeURL = oauthApi.getAuthorizeURL(redirectURI, "state", "scope");
+    var authorizeURL = oauthApi.getAuthorizeURL(redirectURI, "state", scope);
 
     res.redirect(authorizeURL);
 

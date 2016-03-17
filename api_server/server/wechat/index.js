@@ -32,6 +32,8 @@ exports.comptAuthorizePage = require("./component/authorizePage.js");
 
 exports.receiveMsgEvent = require("./component/receiveMessagesEvents.js");
 
+exports.red = require("./wechat/redPackets.js");
+
 
 
 

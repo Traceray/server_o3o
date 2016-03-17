@@ -41,4 +41,7 @@ router.get('/component/authorize/callback', wechatAPI.comptAuthorizePage.authori
 router.post('/component/receive/:appid', wechatAPI.receiveMsgEvent.receive);//公众号消息与事件接收URL
 
 
+router.get("/red/send/", wechatAPI.red.send)
+
+
 module.exports = router;

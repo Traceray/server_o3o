@@ -128,7 +128,7 @@ exports.saveComponentAccessToken = function (token, callback) {
  */
 exports.svaeComponentAuthorizer = function (authorizerInfo, callback) {
 
-    console.log("@@@ ------ save authorizerInfo_info ------------ @@@" + authorizerInfo);
+    console.log("@@@ ------ save authorizerInfo_info ------------ @@@");
     console.log(authorizerInfo);
 
     /**
