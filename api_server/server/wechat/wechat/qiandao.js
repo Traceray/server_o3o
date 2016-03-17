@@ -36,7 +36,7 @@ exports.show = function (req, res, next) {
     
     
      res.render("./qiandao.hbs", {
-                    openid:"oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ"
+                    openid:"oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ",
                     userInfo: {
                         headimgurl:"http://wx.qlogo.cn/mmopen/pb4pbeotvU8icraRRbm3a8kufiarhEVvb8lia3skqktb45lxTcKVic8mXIZKEqr6Gib6YhavmEGbIA3pvK25YZlLicaepYoUKVc3nf/0"
                     }
