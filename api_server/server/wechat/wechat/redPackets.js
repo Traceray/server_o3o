@@ -40,7 +40,7 @@ exports.send = function (req, res, next) {
         total_amount: 101,
         re_openid: "oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ",
         showName: "摇一摇红包活动",
-        clientIp: "101.200.86.253",
+        clientIp: "182.92.238.110",
         luckyMoneyWishing: "生活更美好",
         mch_id: "1314935701",
         wxappid: "wxbc9b7da0b82ac2b8",
