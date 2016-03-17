@@ -15,20 +15,171 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>o3oThumb</title>
-    <link rel="stylesheet" href="/ff/css/all.css"/>
+    <link rel="stylesheet" href="http://cdn.o3onet.com/ff/app.css"/>
+
+    <link rel="stylesheet" href="http://cdn.o3onet.com/bower_components/pure/grids-min.css"/>
+
+    <style>
+        .phoneInput {
+            height: 45px;
+            border: 1px;
+            background-color: #ffffff;
+            border-bottom: 1px #dbdbec solid;
+            text-align: center;
+        }
+
+        .tit1 {
+            line-height: 45px;
+            font-size: 16px;
+            margin: 0 5px 0 5px;
+        }
+
+        label {
+            font-size: 16px;
+            line-height: 45px;
+        }
+
+        input {
+            line-height: 45px;
+            height: 45px;
+        }
+
+        .weui_input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            -webkit-appearance: none;
+            background-color: transparent;
+            font-size: inherit;
+            color: inherit;
+            height: 45px;
+            line-height: 45px;
+        }
+
+        .btn2 {
+            position: relative;
+            display: block;
+            margin-left: 12px;
+            margin-right: 12px;
+            padding-left: 14px;
+            padding-right: 14px;
+            box-sizing: border-box;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            line-height: 2.33333333;
+            border-radius: 8px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            background-color: #34be87;
+            margin-top: 12px;
+        }
+
+        .btn2:active {
+            color: hsla(0, 0%, 100%, .4);
+            background-color: #36978b;
+        }
+
+
+    </style>
+
 </head>
 <body>
 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+
 <div>
+
     <div>
-        <img src="">
+        <img src="http://cdn.o3onet.com/sylj/temp/top.jpg" width="100%"/>
     </div>
+
+    <div style="background-image: url('http://cdn.o3onet.com/sylj/temp/repeat.jpg')">
+
+        <div style="text-align: center;width: 100%;">
+            <img src="{{userInfo.headimgurl}}"
+                 width="75px" style="border-radius: 8px">
+        </div>
+
+        <div class="pure-g phoneInput" style="margin-top:3px;">
+            <div class="pure-u-8-24">
+                <span class="tit1">姓名:</span>
+            </div>
+            <div class="pure-u-16-24">
+                <input class="weui_input" type="text" placeholder="请输入您的姓名"
+                       id="username"/>
+            </div>
+        </div>
+
+        <div class="pure-g phoneInput">
+            <div class="pure-u-8-24">
+                <span class="tit1">电话号码:</span>
+            </div>
+            <div class="pure-u-16-24">
+                <input class="weui_input" type="number" placeholder="请输入您的电话号码"
+                       id="phoneNum"/>
+            </div>
+        </div>
+
+        <div style="text-align: center;margin-top: 10px;margin-bottom: 5px;">
+            <div class="pure-u-18-24">
+                <a class="btn2" id="register"><span class="tit3">签到并领取红包</span></a>
+            </div>
+        </div>
+
+        <div style="height: 120px">
+
+        </div>
+
+    </div>
+
+    <div style="position: absolute;bottom: 0;">
+        <img src="http://cdn.o3onet.com/sylj/temp/background.jpg" style="width: 100%">
+    </div>
+
+</div>
 </div>
 
 <script>
+    $(function () {
 
+        $("#register").click(function () {
+            var username = $("#username").val();
+            var phoneNum = $("#phoneNum").val();
+
+            if (!username) {
+                alert("用户名不能为空")
+                return;
+            }
+
+            if (!phoneNum) {
+                alert("电话号码不能为空");
+                return;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/ztg/wechat/qiandao/accept",
+                async: true,//同步
+                data: {
+                    username: username,
+                    phoneNum: phoneNum,
+                    openid: "{{openid}}"
+                },
+                success: function (dataObj) {
+
+                    alert(dataObj)
+                }, error: function (err) {
+
+                }
+            });
+        });
+
+
+    });
 </script>
 
 </body>

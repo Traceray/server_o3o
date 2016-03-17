@@ -36,6 +36,8 @@ orm.loadCollection(promotInfo);
 var promotPageInfo = require("../models/promot/promot.page.server.model.js");
 orm.loadCollection(promotPageInfo);
 
+var qiandaoInfo = require("../models/qiandao/qiandao.info.server.model");
+orm.loadCollection(qiandaoInfo);
 
 module.exports = orm;
 

@@ -18,13 +18,13 @@ var tuling123Config = require("config").get("tuling123");
 
 var wxConfig = {
     appid: wechatConfig.appid,
-    tocken: wechatConfig.tocken,
+    token: wechatConfig.token,
     encodingAESKey: wechatConfig.encodingAESKey
 }
 
 console.log(wxConfig);
 
-exports.wechat = wechat(wxConfig.tocken, function (req, res, next) {
+exports.wechat = wechat(wxConfig.token, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
