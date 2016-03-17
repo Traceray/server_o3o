@@ -22,6 +22,7 @@ var xmlreader = require('xmlreader');  //需要安装 xmlreader包
 var fs = require('fs');
 var https = require('https');
 var crypto = require('crypto');
+var md5 = require('MD5');
 
 var fnCreateXml = function (json) {
 
@@ -100,16 +101,17 @@ var fnGetWeixinBonus = function (option) {
     var _contentStr = fnCreateUrlParam(_contentJson);
     console.log('content=' + _contentStr);
 
-    _contentJson.sign = crypto.createHash('md5').update(_contentStr).digest("hex").toUpperCase();
+    _contentJson.sign = md5(_contentStr).toUpperCase();
+    //_contentJson.sign = crypto.createHash('md5').update(_contentStr).digest("hex").toUpperCase();
 
     //删除 key (key不参与签名)
     delete _contentJson.key;
     var _xmlData = fnCreateXml(_contentJson);
 
     var _sendData = '<xml>' + _xmlData + '</xml>'; //_xmlTemplate.replace(/{content}/)
-
-    return _sendData;
     console.log('xml=' + _sendData);
+    return _sendData;
+
 }
 
 var fnSendMoney = function (req, res, data, callback) {

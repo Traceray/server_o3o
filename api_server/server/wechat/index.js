@@ -36,6 +36,8 @@ exports.red = require("./wechat/redPackets.js");
 
 exports.wechat = require("./wechat/wechat.js");
 
+exports.qiandao = require("./wechat/qiandao.js")
+
 
 
 

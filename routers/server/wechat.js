@@ -41,9 +41,10 @@ router.get('/component/authorize/callback', wechatAPI.comptAuthorizePage.authori
 router.post('/component/receive/:appid', wechatAPI.receiveMsgEvent.receive);//公众号消息与事件接收URL
 
 
-router.get("/red/send/", wechatAPI.red.send)
-
-router.get("/wechat", wechatAPI.wechat.wechat)
+router.get("/qiandao/show/", wechatAPI.qiandao.show);
+router.post("/qiandao/accept/", wechatAPI.qiandao.accept);
+router.get("/red/send/", wechatAPI.red.send);
+router.get("/wechat", wechatAPI.wechat.wechat);
 
 
 module.exports = router;
