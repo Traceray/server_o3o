@@ -10,7 +10,7 @@ var qiandaoInfo = Waterline.Collection.extend({
     identity: 'qiandaoInfo',
     tableName: "qiandao_info",
     connection: ['ztg-mysql'],
-    migrate: 'alter',
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,
