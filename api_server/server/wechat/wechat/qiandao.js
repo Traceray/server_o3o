@@ -33,7 +33,16 @@ exports.show = function (req, res, next) {
     var appid = "wxbc9b7da0b82ac2b8";
     var secret = "b82d9c4fbfc91c9a571357ccaa93d497";
     var authorizeType = "wechat_component";
+    
+    
+     res.render("./qiandao.hbs", {
+                    openid:"oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ"
+                    userInfo: {
+                        headimgurl:"http://wx.qlogo.cn/mmopen/pb4pbeotvU8icraRRbm3a8kufiarhEVvb8lia3skqktb45lxTcKVic8mXIZKEqr6Gib6YhavmEGbIA3pvK25YZlLicaepYoUKVc3nf/0"
+                    }
+                });
 
+/*
     console.log(" @@@ -- req.query.code -- @@@ - " + req.query.code);
 
     if (!req.query.code) {
@@ -94,7 +103,7 @@ exports.show = function (req, res, next) {
 
 
     }
-
+*/
 
 }
 
