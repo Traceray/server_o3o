@@ -36,7 +36,7 @@
         "password": "o3o_server_ztg",
         "database": "o3o_server_ztg",
         "port": 3306,
-        "connectionLimit": 3
+        "connectionLimit": 20
       },
       "infoDataBase": {
         "host": "rdsjiqfafzrzrz2o.mysql.rds.aliyuncs.com",
