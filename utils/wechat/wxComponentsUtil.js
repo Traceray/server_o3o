@@ -232,7 +232,7 @@ exports.getComponentOpendIdAccessToken = function (openid, callback) {
     /**
      * 获取数据
      */
-    app.models.wechatcomponentauthorizeraccesstoken.findOne({
+    app.models.wechatcomponentopenidaccesstoken.findOne({
             where: {
                 openid: openid,
             },
