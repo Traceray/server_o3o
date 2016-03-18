@@ -153,6 +153,7 @@ exports.svaeComponentAuthorizer = function (authorizerInfo, callback) {
     });
 }
 
+
 /**
  * 获取授权信息
  */
@@ -198,6 +199,7 @@ exports.getAuthorizerAccessToken = function (authorizer_appid, callback) { //TOD
  */
 exports.saveAuthorizerAccessToken = function (authorizer_appid, token, callback) {
 
+
     console.log("@@@ ------ save authorizerAccessToken ------------ @@@");
     console.dir(token);
 
@@ -220,3 +222,71 @@ exports.saveAuthorizerAccessToken = function (authorizer_appid, token, callback)
     });
 
 }
+
+/**
+ * 获取第三方平台授权认证获取用户信息时的access_token 与授权的不同
+ */
+exports.getComponentOpendIdAccessToken = function (openid, callback) {
+
+
+    /**
+     * 获取数据
+     */
+    app.models.wechatcomponentauthorizeraccesstoken.findOne({
+            where: {
+                openid: openid,
+            },
+            sort: "id DESC"
+        }
+    ).exec(function (err, docs) {
+
+        console.log(err)
+
+        if (err) return callback(err);
+        if (!docs) return callback(null, "@@@ ------ get AuthorizerAccessToken empty------------ @@@");
+
+        console.log(docs);
+
+        callback(null, {
+            openid: docs.openid,
+            access_token: docs.access_token,
+            refresh_token: docs.refresh_token,
+            expires_in: docs.expires_in,
+            create_at: docs.create_at,
+        })
+    });
+
+
+}
+
+
+/**
+ * 保存第三方平台授权认证获取用户信息时的access_token 与授权的不同
+ */
+exports.saveComponentOpendIdAccessToken = function (openid, token, callback) {
+
+    //
+    //:{ access_token: 'OezXcEiiBSKSxW0eoylIeBKYoFJHGTOX1D0QEedDpww4F3M3N2lcVxZioZ6QlBecKxuEIBsdJtJEH4Bk9E5nB91BDwrBqARzPSh7RKWzb-z96mxDT03r4WEwhWhTfHbRdPT7LYfwK5Co6chU28ws9y72vJdHBAF5YBxFtNSm8fdOkGuwb_Q8IeLMWgveDuKx',
+    //2016-03-18 10:38:52:  expires_in: 7200,
+    //2016-03-18 10:38:52:  refresh_token: 'OezXcEiiBSKSxW0eoylIeBKYoFJHGTOX1D0QEedDpww4F3M3N2lcVxZioZ6QlBecHkvVaCcHONgC-njZvVmKGl5gs7cL5DD66fmGWgMx3qSbDn0UmDAHLRuOPVtBF3Yy-9p9mVzdZ-bGYB83L_iy3Y_HQXMOT_GUgVuOoLW4HjoA6ZYJzkGqAQ3uWZ1VNgY7',
+    //2016-03-18 10:38:52:  openid: 'oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ',
+    //2016-03-18 10:38:52:  scope: 'snsapi_userinfo',
+    //2016-03-18 10:38:52:  create_at: 1458268732737 }
+
+    /**
+     * 保存数据
+     */
+    app.models.wechatcomponentopenidaccesstoken.create({
+        openid: openid,
+        access_token: token.access_token,
+        refresh_token: token.refresh_token,
+        expires_in: token.expires_in,
+        create_at: token.create_at,
+    }, function (err, model) {
+        if (err) return callback(err);
+        callback(null, model)
+    });
+
+
+}
+

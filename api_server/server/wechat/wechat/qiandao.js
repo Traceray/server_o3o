@@ -48,7 +48,7 @@ exports.show = function (req, res, next) {
 
         //检验授权方式
         if (authorizeType == "wechat_component") {
-            var oauthApi = component.getOAuth(appid, wxComponentsUtil.getAuthorizerAccessToken, wxComponentsUtil.saveAuthorizerAccessToken);
+            var oauthApi = component.getOAuth(appid, wxComponentsUtil.getComponentOpendIdAccessToken, wxComponentsUtil.saveComponentOpendIdAccessToken);
         } else if (authorizeType == "wechat_urlbind") {
             var oauthApi = new OAuth(appid, secret, wxUtil.getWechatAccessToken(appid), wxUtil.saveWechatAccessToken(appid));
         } else {
@@ -61,9 +61,7 @@ exports.show = function (req, res, next) {
 
         console.log(url)
 
-        res.send(url)
-
-        //return res.redirect(url);
+        return res.redirect(url);
 
     } else {
 
@@ -71,7 +69,7 @@ exports.show = function (req, res, next) {
 
         //检验授权方式
         if (authorizeType == "wechat_component") {
-            var oauthApi = component.getOAuth(appid, wxComponentsUtil.getAuthorizerAccessToken, wxComponentsUtil.saveAuthorizerAccessToken);
+            var oauthApi = component.getOAuth(appid, wxComponentsUtil.getComponentOpendIdAccessToken, wxComponentsUtil.saveComponentOpendIdAccessToken);
         } else if (authorizeType == "wechat_urlbind") {
             var oauthApi = new OAuth(appid, secret, wxUtil.getWechatAccessToken(appid), wxUtil.saveWechatAccessToken(appid));
         } else {

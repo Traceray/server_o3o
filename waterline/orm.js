@@ -42,6 +42,11 @@ orm.loadCollection(qiandaoInfo);
 var hongbaoInfo = require("../models/qiandao/hongbao.info.server.model");
 orm.loadCollection(hongbaoInfo);
 
+var wechatComponentOpenidAccessToken = require("../models/wechat/wechat.component.openid_access_token.model");
+orm.loadCollection(wechatComponentOpenidAccessToken);
+
+
+
 module.exports = orm;
 
 
