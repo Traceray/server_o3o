@@ -20,4 +20,6 @@ CLIENT_API.getUsersLoanApprovalingListAPI = syljApiPrefixUrl + "/v1/loanApproval
 CLIENT_API.getSingleUserApprovalingDataAPI = syljApiPrefixUrl + "/v1/loanApprovals/ing";
 
 
+CLIENT_API.getSingleUserWeChatInfoAPI = syljApiPrefixUrl + "/v3/users/wechat"
+
 module.exports = CLIENT_API;

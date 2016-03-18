@@ -89,7 +89,7 @@ exports.show = function (req, res, next) {
 
             console.log(" get openid - " + openid);
 
-            client.getUser(openid, function (err, result) {
+            oauthApi.getUser(openid, function (err, result) {
                 if (err) {
                     console.error("!!!---获取用户信息错误---!!!");
                     console.error(err);
@@ -97,6 +97,12 @@ exports.show = function (req, res, next) {
                     return;
                 }
                 var userInfo = result;
+
+                /**
+                 * TODO::使用RESTFULAPI保存用户信息
+                 */
+                console.log(userInfo)
+
 
                 //获取用户信息
 
