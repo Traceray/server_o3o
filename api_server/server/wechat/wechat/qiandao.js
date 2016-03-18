@@ -240,14 +240,5 @@ exports.accept = function (req, res, next) {
 
         }
     });
+
 }
-
-
-/*
- if (ret.result_code == "SUCCESS") {
-
- app.models.hongbaoinfo.create({
- openid: openid,
- num: num
- }, function (err, model) {
-                                                                         
