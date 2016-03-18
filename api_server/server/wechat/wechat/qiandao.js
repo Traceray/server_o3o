@@ -57,9 +57,17 @@ exports.show = function (req, res, next) {
 
         var redirectURI = protocol + websiteUrl + "/ztg/wechat/qiandao/show";
 
-        return res.redirect(oauthApi.getAuthorizeURL(redirectURI, "state", scope));
+        var url = oauthApi.getAuthorizeURL(redirectURI, "state", scope);
+
+        console.log(url)
+
+        res.send(url)
+
+        //return res.redirect(url);
 
     } else {
+
+        console.log(" @@@ -- req.query.code -- @@@ " + req.query.code);
 
         //检验授权方式
         if (authorizeType == "wechat_component") {
@@ -71,7 +79,12 @@ exports.show = function (req, res, next) {
         }
 
         oauthApi.getAccessToken(req.query.code, function (err, result) {
-            if (err) return next(new Error(" @@@ --- 获取用户微信授权信息失败 --- @@@ ") + err.toString());
+
+            if (err) console.error(err);
+
+            if (err) return res.send(err);
+
+            console.log(result);
 
             var accessToken = result.data.access_token;
             var openid = result.data.openid;
