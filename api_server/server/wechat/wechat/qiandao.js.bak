@@ -169,7 +169,7 @@ exports.accept = function (req, res, next) {
             clientIp: "182.92.238.110",
             luckyMoneyWishing: "生活更美好",
             mch_id: "1315418001",
-            wxappid: "wx07447fb97b42ca2f",
+            wxappid: "wxbc9b7da0b82ac2b8",
             wxkey: "m9jrvj9TV616V9w6gvp95V91vV99JfrV",
             send_name: "沈阳泛美传媒"
         }
