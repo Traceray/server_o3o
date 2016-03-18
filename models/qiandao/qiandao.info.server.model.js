@@ -30,6 +30,10 @@ var qiandaoInfo = Waterline.Collection.extend({
             type: 'string',
             required: false
         },
+        headimgurl: {
+            type: 'string',
+            required: false
+        },
         phoneNum: {
             type: 'string',
             required: false

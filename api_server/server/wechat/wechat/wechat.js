@@ -22,8 +22,6 @@ var wxConfig = {
     encodingAESKey: wechatConfig.encodingAESKey
 }
 
-console.log(wxConfig);
-
 exports.wechat = wechat(wxConfig.token, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上

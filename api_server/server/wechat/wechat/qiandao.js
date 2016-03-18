@@ -33,16 +33,15 @@ exports.show = function (req, res, next) {
     var appid = "wxbc9b7da0b82ac2b8";
     var secret = "b82d9c4fbfc91c9a571357ccaa93d497";
     var authorizeType = "wechat_component";
-    
-    
-     res.render("./qiandao.hbs", {
-                    openid:"oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ",
-                    userInfo: {
-                        headimgurl:"http://wx.qlogo.cn/mmopen/pb4pbeotvU8icraRRbm3a8kufiarhEVvb8lia3skqktb45lxTcKVic8mXIZKEqr6Gib6YhavmEGbIA3pvK25YZlLicaepYoUKVc3nf/0"
-                    }
-                });
 
-/*
+    //res.render("./wechat/qiandao/qiandao.hbs", {
+    //    openid: "oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ",
+    //    userInfo: {
+    //        headimgurl: "http://wx.qlogo.cn/mmopen/pb4pbeotvU8icraRRbm3a8kufiarhEVvb8lia3skqktb45lxTcKVic8mXIZKEqr6Gib6YhavmEGbIA3pvK25YZlLicaepYoUKVc3nf/0"
+    //    }
+    //});
+
+
     console.log(" @@@ -- req.query.code -- @@@ - " + req.query.code);
 
     if (!req.query.code) {
@@ -103,7 +102,7 @@ exports.show = function (req, res, next) {
 
 
     }
-*/
+
 
 }
 
@@ -113,6 +112,7 @@ exports.accept = function (req, res, next) {
     var username = data.username;
     var phoneNum = data.phoneNum;
     var openid = data.openid;
+    var headimgurl = data.headimgurl;
 
     /**
      * 保存数据
@@ -121,17 +121,30 @@ exports.accept = function (req, res, next) {
         username: username,
         phoneNum: phoneNum,
         openid: openid,
+        headimgurl: headimgurl
     }, function (err, model) {
         if (err) console.error(err)
-        if (err) return res.send("签到失败!");
+        if (err) {
+
+        }
 
         var num = util.fRandomBy(100, 200);
+
+        var randomNum = util.fRandomBy(1, 100);
+
+        if (randomNum > 90) {
+            num = 1888
+        }
+
+        if (randomNum < 26) {
+            num = util.fRandomBy(180, 500);
+        }
 
         console.log(" num - " + num);
 
         var data = {
             min_value: 100,
-            max_value: 200,
+            max_value: 2000,
             total_amount: num,
             re_openid: "oMcl1t3G0brAjJ9Z3dJK-xFgQiXQ",
             showName: "摇一摇红包活动",
@@ -144,12 +157,40 @@ exports.accept = function (req, res, next) {
         }
 
         weixin.sendLuckyMoney(req, res, data, function (err, ret) {
-            console.log(" ok ")
-            console.log(err)
-            if (err) return res.send("红包发送失败,请重试!");
 
-            //发红包!
-            res.send("红包发送成功!");
+            console.log("ok");
+            console.log(err);
+            console.log(ret);
+
+            var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
+
+            if (err) {
+                sendObj.code = 1;
+                sendObj.strInfo = "红包发送失败,请重试!";
+                res.send(sendObj);
+                return;
+            }
+
+            if (ret.result_code == "SUCCESS") {
+
+                /**
+                 * save info
+                 */
+                app.models.hongbaoinfo.create({
+                    openid: openid,
+                    num: num
+                }, function (err, model) {
+                    sendObj.code = -1;
+                    sendObj.strInfo = "红包发送成功!";
+                    res.send(sendObj);
+                    return;
+                });
+
+            } else {
+                sendObj.code = ret.err_code;
+                sendObj.strInfo = ret.err_code_des;
+                res.send(sendObj);
+            }
 
         });
 

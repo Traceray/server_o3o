@@ -39,6 +39,9 @@ orm.loadCollection(promotPageInfo);
 var qiandaoInfo = require("../models/qiandao/qiandao.info.server.model");
 orm.loadCollection(qiandaoInfo);
 
+var hongbaoInfo = require("../models/qiandao/hongbao.info.server.model");
+orm.loadCollection(hongbaoInfo);
+
 module.exports = orm;
 
 

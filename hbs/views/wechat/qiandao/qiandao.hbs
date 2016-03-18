@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="http://cdn.o3onet.com/ff/app.css"/>
 
     <link rel="stylesheet" href="http://cdn.o3onet.com/bower_components/pure/grids-min.css"/>
+    <link rel="stylesheet" href="http://cdn.o3onet.com/sylj/temp/weui.min.css"/>
 
     <style>
         .phoneInput {
@@ -81,6 +82,10 @@
             background-color: #36978b;
         }
 
+        .weui_icon_warn:before {
+            color: #ffc135;
+            font-size: 55px;
+        }
 
     </style>
 
@@ -124,14 +129,10 @@
             </div>
         </div>
 
-        <div style="text-align: center;margin-top: 10px;margin-bottom: 5px;">
+        <div style="text-align: center;margin-top: 10px;margin-bottom: 15px;">
             <div class="pure-u-18-24">
                 <a class="btn2" id="register"><span class="tit3">签到并领取红包</span></a>
             </div>
-        </div>
-
-        <div style="height: 120px">
-
         </div>
 
     </div>
@@ -140,25 +141,92 @@
         <img src="http://cdn.o3onet.com/sylj/temp/background.jpg" style="width: 100%">
     </div>
 
+    <!--BEGIN toast-->
+    <div id="toast" style="display: none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <i class="weui_icon_toast" style="font-size: 55px"></i>
+            <p class="weui_toast_content">已完成</p>
+        </div>
+    </div>
+    <!--end toast-->
+
+    <!-- loading toast -->
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">签到中。。。</p>
+        </div>
+    </div>
+    <!--end loading toast-->
+
 </div>
 </div>
 
 <script>
     $(function () {
 
+        var hasClickable = true;
+
         $("#register").click(function () {
+
             var username = $("#username").val();
             var phoneNum = $("#phoneNum").val();
 
+            var $toast = $('#toast');
+
+            if (!hasClickable) {
+                return false;
+            }
+
             if (!username) {
-                alert("用户名不能为空")
+
+                $toast.find("i").removeClass("weui_icon_toast").addClass("weui_icon_warn");
+                $("#toast").find(".weui_toast_content").text("姓名不能为空");
+                $toast.show();
+
+                setTimeout(function () {
+                    $toast.hide();
+                }, 3000);
+
                 return;
             }
 
-            if (!phoneNum) {
-                alert("电话号码不能为空");
+            if (!checkIsTel(phoneNum)) {
+
+                $toast.find("i").removeClass("weui_icon_toast").addClass("weui_icon_warn");
+                $("#toast").find(".weui_toast_content").text("请输入正确的电话号码");
+                $toast.show();
+
+                setTimeout(function () {
+                    $toast.hide();
+                }, 3000);
+
                 return;
             }
+
+            hasClickable = false;
+
+            var $loadingToast = $('#loadingToast');
+            if ($loadingToast.css('display') != 'none') {
+                return;
+            }
+
+            $loadingToast.show();
 
             $.ajax({
                 type: "post",
@@ -167,16 +235,61 @@
                 data: {
                     username: username,
                     phoneNum: phoneNum,
-                    openid: "{{openid}}"
+                    openid: "{{openid}}",
+                    headimgurl: "{{userInfo.headimgurl}}"
                 },
                 success: function (dataObj) {
 
-                    alert(dataObj)
+                    $loadingToast.hide();
+
+                    hasClickable = true;
+
+                    if ($toast.css('display') != 'none') {
+                        return;
+                    }
+
+                    if (dataObj.code != -1) {
+                        $toast.find("i").removeClass("weui_icon_toast").addClass("weui_icon_warn");
+                        $("#toast").find(".weui_toast_content").text(dataObj.strInfo);
+                    } else {
+                        $("#toast").find(".weui_toast_content").text(dataObj.strInfo);
+                    }
+
+                    $toast.show();
+                    setTimeout(function () {
+                        $toast.hide();
+                    }, 3000);
+
+
                 }, error: function (err) {
+
+                    $loadingToast.hide();
+
+                    if ($toast.css('display') != 'none') {
+                        return;
+                    }
+
+                    $toast.find("i").removeClass("weui_icon_toast").addClass("weui_icon_warn");
+                    $("#toast").find(".weui_toast_content").text("发生了错误，请重试!");
+                    $toast.show();
+
+                    setTimeout(function () {
+                        $toast.hide();
+                    }, 5000);
+
 
                 }
             });
         });
+
+        function checkIsTel(strTel) {
+            var pattern = /^((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)$/;
+            if (pattern.test(strTel) && strTel != "") {
+                //  document.getElementById('doing').style.visibility='hidden';
+                return true;
+            }
+            else return false;
+        }
 
 
     });

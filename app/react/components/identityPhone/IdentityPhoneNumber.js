@@ -36,6 +36,7 @@ class IdentityPhoneNumber extends React.Component {
                 self.find("span").text("发送验证码");
                 return;
             }
+
             hasClickable = false;
 
             postMsgCheck({

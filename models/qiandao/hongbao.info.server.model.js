@@ -6,11 +6,11 @@
 var Waterline = require('waterline');
 var NODE_UUID = require('node-uuid');
 
-var qiandaoInfo = Waterline.Collection.extend({
-    identity: 'qiandaoInfo',
-    tableName: "qiandao_info",
+var hongbaoInfo = Waterline.Collection.extend({
+    identity: 'hongbaoInfo',
+    tableName: "hongbao_info",
     connection: ['ztg-mysql'],
-    migrate: 'alter',
+    migrate: 'safe',
     autoPK: true,
     schema: true,
     autoCreatedAt: true,
@@ -26,11 +26,7 @@ var qiandaoInfo = Waterline.Collection.extend({
             type: 'string',
             required: false
         },
-        username: {
-            type: 'string',
-            required: false
-        },
-        phoneNum: {
+        num: {
             type: 'string',
             required: false
         },
@@ -46,4 +42,4 @@ var qiandaoInfo = Waterline.Collection.extend({
     }
 });
 
-module.exports = qiandaoInfo;
+module.exports = hongbaoInfo;
