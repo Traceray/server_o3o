@@ -110,7 +110,7 @@ exports.show = function (req, res, next) {
 
                 //获取用户信息
 
-                res.render("./qiandao.hbs", {
+                res.render("./wechat/qiandao/qiandao.hbs", {
                     openid: openid,
                     userInfo: userInfo
                 })
