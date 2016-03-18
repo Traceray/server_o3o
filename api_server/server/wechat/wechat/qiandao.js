@@ -134,6 +134,54 @@ exports.accept = function (req, res, next) {
     var phoneNum = data.phoneNum;
     var openid = data.openid;
     var headimgurl = data.headimgurl;
+    
+    
+    
+    
+    
+    
+     /**
+     * 获取数据
+     */
+    app.models.qiandaoinfo.findOne({
+            where: {
+                openid: openid,
+            },
+            sort: "id DESC"
+        }
+    ).exec(function (err, docs) {
+
+        console.log(err)
+
+        if (err) {
+            
+            var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
+
+            sendObj.code = 1;
+            sendObj.strInfo = "对不起，发生了错误，请返回重试!";
+            res.send(sendObj);
+            return;
+
+        }
+
+        if (docs) {
+
+            var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
+
+            sendObj.code = 1;
+            sendObj.strInfo = "对不起，您已经签到过了!";
+            res.send(sendObj);
+            return;
+
+        } else {
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * 保存数据
@@ -226,5 +274,7 @@ exports.accept = function (req, res, next) {
 
 
     });
+    
+        }
 
 }
