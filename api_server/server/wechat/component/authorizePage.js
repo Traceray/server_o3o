@@ -72,21 +72,17 @@ exports.authorizePageBack = function (req, res, next) {
 
                 console.log("  @@@ -- get authorizerInfo back -- @@@ ");
                 console.log(authorizerInfo);
-                var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
-                sendObj.strInfo = "授权成功!";
-                sendObj.jsonData.authorizerInfo = authorizerInfo;
-                res.send(sendObj);
 
-                //wxComponentsUtil.svaeComponentAuthorizer(authorizerInfo, function (err, data) {
-                //
-                //    if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
-                //
-                //    var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
-                //    sendObj.strInfo = "授权成功!";
-                //    sendObj.jsonData.authorizerInfo = authorizerInfo;
-                //    res.send(sendObj);
-                //
-                //});
+                wxComponentsUtil.svaeComponentAuthorizer(authorizerInfo, function (err, data) {
+
+                    if (err) return res.send(new app.sendJsonObj(10203, "保存第三方平台authorizer_info时发生了错误!", err).send(null, __dirname, 1, "serverPage"));
+
+                    var sendObj = {strInfo: "", code: -1, error: {title: "", detail: ""}, jsonData: {}};
+                    sendObj.strInfo = "授权成功!";
+                    sendObj.jsonData.authorizerInfo = authorizerInfo;
+                    res.send(sendObj);
+
+                });
 
             });
 
