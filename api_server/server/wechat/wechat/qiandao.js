@@ -76,6 +76,10 @@ exports.show = function (req, res, next) {
             return next(new Error(" @@@ --- 该活动并为指定微信公众平台授权方式或是授权信息已经失效 --- @@@ "));
         }
 
+        var redirectURI = protocol + websiteUrl + "/ztg/wechat/qiandao/show";
+        var url = oauthApi.getAuthorizeURL(redirectURI, "state", scope);
+        console.log(url)
+
         oauthApi.getAccessToken(req.query.code, function (err, result) {
 
             if (err) console.error(err);
@@ -93,7 +97,7 @@ exports.show = function (req, res, next) {
                 if (err) {
                     console.error("!!!---获取用户信息错误---!!!");
                     console.error(err);
-                    res.redirect(redirectUrl);
+                    res.redirect(url);
                     return;
                 }
                 var userInfo = result;
