@@ -19,6 +19,10 @@ var sendJsonObj = function (code, errorTitle, errorDetail, jsonObj, jsonStr) {
 
 sendJsonObj.prototype.send = function (needSendMsg, dirName, level, type) { //"serverPage"
 
+    console.log("  @@@ -- sendJsonObj -- @@@");
+
+    console.log(this.sendJsonObj);
+
     if (this.getCode() != 0) console.error(this.sendJsonObj);//TODO::统一错误处理
 
     if (needSendMsg) console.error("严重错误");

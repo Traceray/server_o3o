@@ -51,6 +51,8 @@ exports.authorizePageBack = function (req, res, next) {
 
     component.queryAuth(authorization_code, function (err, authorizationInfo) {//获取授权码信息
 
+        if (err) console.error(err);
+
         var authorization_info = authorizationInfo.authorization_info;
 
         console.log("  @@@ -- get authorizationInfo back -- @@@ ");
