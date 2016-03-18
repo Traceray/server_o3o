@@ -134,13 +134,9 @@ exports.accept = function (req, res, next) {
     var phoneNum = data.phoneNum;
     var openid = data.openid;
     var headimgurl = data.headimgurl;
-    
-    
-    
-    
-    
-    
-     /**
+
+
+    /**
      * 获取数据
      */
     app.models.qiandaoinfo.findOne({
@@ -154,7 +150,7 @@ exports.accept = function (req, res, next) {
         console.log(err)
 
         if (err) {
-            
+
             var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
 
             sendObj.code = 1;
@@ -169,112 +165,89 @@ exports.accept = function (req, res, next) {
             var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
 
             sendObj.code = 1;
-            sendObj.strInfo = "对不起，您已经签到过了!";
+            sendObj.strInfo = "对不起，您已经签到过了!!!";
             res.send(sendObj);
             return;
 
         } else {
-    
-    
-    
-    
-    
-    
-    
-    
 
-    /**
-     * 保存数据
-     */
-    app.models.qiandaoinfo.create({
-        username: username,
-        phoneNum: phoneNum,
-        openid: openid,
-        headimgurl: headimgurl
-    }, function (err, model) {
-        if (err) console.error(err)
-
-        var num = util.fRandomBy(100, 200);
-
-        var randomNum = util.fRandomBy(1, 100);
-
-        if (randomNum > 90) {
-            num = 1888
-        }
-
-        if (randomNum < 26) {
-            num = util.fRandomBy(180, 500);
-        }
-
-        console.log(" num - " + num);
-
-        var data = {
-            min_value: 100,
-            max_value: 2000,
-            total_amount: num,
-            re_openid: openid,
-            showName: "摇一摇红包活动",
-            clientIp: "182.92.238.110",
-            luckyMoneyWishing: "生活更美好",
-            mch_id: "1315418001",
-            wxappid: "wx07447fb97b42ca2f",
-            wxkey: "m9jrvj9TV616V9w6gvp95V91vV99JfrV",
-            send_name: "沈阳泛美传媒"
-        }
-
-        weixin.sendLuckyMoney(req, res, data, function (err, ret) {
-
-            console.log("ok");
-            console.log(err);
-            console.log(ret);
-
-            var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
-
-            if (err) {
-                sendObj.code = 1;
-                sendObj.strInfo = "红包发送失败,请重试!";
-                res.send(sendObj);
-                return;
-            } else {
-                app.models.hongbaoinfo.create({
-                    openid: openid,
-                    num: num
-                }, function (err, model) {
-                    sendObj.code = -1;
-                    sendObj.strInfo = "红包发送成功!";
-                    res.send(sendObj);
-                    return;
-                });
-            }
-
-
-            /*
-             if (ret.result_code == "SUCCESS") {
-
-             app.models.hongbaoinfo.create({
-             openid: openid,
-             num: num
-             }, function (err, model) {
-             sendObj.code = -1;
-             sendObj.strInfo = "红包发送成功!";
-             res.send(sendObj);
-             return;
-             });
-
-             } else {
-             sendObj.code = ret.err_code;
-             sendObj.strInfo = ret.err_code_des;
-             res.send(sendObj);
-             }
-
-
+            /**
+             * 保存数据
              */
+            app.models.qiandaoinfo.create({
+                username: username,
+                phoneNum: phoneNum,
+                openid: openid,
+                headimgurl: headimgurl
+            }, function (err, model) {
+                if (err) console.error(err)
 
-        });
+                var num = util.fRandomBy(100, 200);
 
+                var randomNum = util.fRandomBy(1, 100);
 
-    });
-    
+                if (randomNum > 90) {
+                    num = 1888
+                }
+
+                if (randomNum < 26) {
+                    num = util.fRandomBy(180, 500);
+                }
+
+                console.log(" num - " + num);
+
+                var data = {
+                    min_value: 100,
+                    max_value: 2000,
+                    total_amount: num,
+                    re_openid: openid,
+                    showName: "摇一摇红包活动",
+                    clientIp: "182.92.238.110",
+                    luckyMoneyWishing: "生活更美好",
+                    mch_id: "1315418001",
+                    wxappid: "wx07447fb97b42ca2f",
+                    wxkey: "m9jrvj9TV616V9w6gvp95V91vV99JfrV",
+                    send_name: "沈阳泛美传媒"
+                }
+
+                weixin.sendLuckyMoney(req, res, data, function (err, ret) {
+
+                    console.log("ok");
+                    console.log(err);
+                    console.log(ret);
+
+                    var sendObj = {code: -1, error: {title: "", detail: ""}, jsonData: {}, strInfo: ""};
+
+                    if (err) {
+                        sendObj.code = 1;
+                        sendObj.strInfo = "红包发送失败,请重试!";
+                        res.send(sendObj);
+                        return;
+                    } else {
+                        app.models.hongbaoinfo.create({
+                            openid: openid,
+                            num: num
+                        }, function (err, model) {
+                            sendObj.code = -1;
+                            sendObj.strInfo = "红包发送成功!";
+                            res.send(sendObj);
+                            return;
+                        });
+                    }
+                });
+
+            });
+
         }
-
+    });
 }
+
+
+/*
+ if (ret.result_code == "SUCCESS") {
+
+ app.models.hongbaoinfo.create({
+ openid: openid,
+ num: num
+ }, function (err, model) {
+                                                                         
