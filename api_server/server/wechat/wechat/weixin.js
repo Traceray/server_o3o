@@ -139,10 +139,9 @@ var fnSendMoney = function (req, res, data, callback) {
             console.log('微信返回消息');
             console.log(body);
             var ret = fnParseReceivedXML(body);
+            console.log(ret);
             //如果回调存在就执行回调函数
-            if (typeof callback == 'function') {
-                callback(null, ret);
-            }
+            callback(null, ret);
         });
     }).on('error', function (e) {
         callback(e)

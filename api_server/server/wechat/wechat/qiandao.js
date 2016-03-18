@@ -145,9 +145,6 @@ exports.accept = function (req, res, next) {
         headimgurl: headimgurl
     }, function (err, model) {
         if (err) console.error(err)
-        if (err) {
-
-        }
 
         var num = util.fRandomBy(100, 200);
 
@@ -190,13 +187,7 @@ exports.accept = function (req, res, next) {
                 sendObj.strInfo = "红包发送失败,请重试!";
                 res.send(sendObj);
                 return;
-            }
-
-            if (ret.result_code == "SUCCESS") {
-
-                /**
-                 * save info
-                 */
+            } else {
                 app.models.hongbaoinfo.create({
                     openid: openid,
                     num: num
@@ -206,12 +197,30 @@ exports.accept = function (req, res, next) {
                     res.send(sendObj);
                     return;
                 });
-
-            } else {
-                sendObj.code = ret.err_code;
-                sendObj.strInfo = ret.err_code_des;
-                res.send(sendObj);
             }
+
+
+            /*
+             if (ret.result_code == "SUCCESS") {
+
+             app.models.hongbaoinfo.create({
+             openid: openid,
+             num: num
+             }, function (err, model) {
+             sendObj.code = -1;
+             sendObj.strInfo = "红包发送成功!";
+             res.send(sendObj);
+             return;
+             });
+
+             } else {
+             sendObj.code = ret.err_code;
+             sendObj.strInfo = ret.err_code_des;
+             res.send(sendObj);
+             }
+
+
+             */
 
         });
 
